@@ -58,7 +58,7 @@ params:
     imageHeight: 220
     buttons:
        - name: Resume
-         url: "home/resume-shaimak.pdf"
+         url: "https://shaimak.github.io/pdfs/resume-shaimak.pdf"
 
   # List View
   hideDescriptionInList: false
