@@ -1,0 +1,102 @@
+publishDir: docs
+baseURL: "https://shaimak.github.io"
+languageCode: en-us
+title: Shaimak Reddy
+theme: PaperMod
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+#    - identifier: blog
+#      name: Blog
+#      url: /blog
+#      weight: 20
+    - identifier: projects
+      name: Projects
+      url: /projects
+      weight: 30
+    - identifier: experience
+      name: Experience
+      url: /experience
+      weight: 40
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 50
+    # - identifier: tags
+    #   name: Tags
+    #   url: /tags
+    #   weight: 60
+    # - identifier: notes
+    #   name: Notes
+    #   url: https://
+    #   weight: 70
+
+params:
+  # theme
+  showToc: true
+  TocOpen: false
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  hideMeta: false
+
+  # for enchanced SEO
+  env: production
+
+  # Home Page
+  profileMode:
+    enabled: true
+    title: "Shaimak Reddy"
+    subtitle: Hi, I'm Shaimak. Please be patient while this website is being built!
+
+ 
+    imageUrl: "home/casual-small-square.jpg"
+    imageWidth: 220
+    imageHeight: 220
+    buttons:
+       - name: Resume
+         url: ""
+
+  # List View
+  hideDescriptionInList: false
+
+  # cover image for posts
+  cover:
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  socialIcons:
+    - name: "email"
+      url: "mailto:shaimak.reddy@gmail.com"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/shaimakreddy"
+    - name: "github"
+      url: "https://github.com/shaimak"
+    - name: "whatsapp"
+      url: "https://wa.me/917799705555"
+
+  # text search
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# for search using Fuse.js
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# allow HTML in MD
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
