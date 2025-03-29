@@ -10,8 +10,7 @@ weight: 4
 --- 
 
 ### Client Engagement
-**Demonetization** 
-[Background](https://en.wikipedia.org/wiki/2016_Indian_banknote_demonetisation)
+**Demonetization**  [Background](https://en.wikipedia.org/wiki/2016_Indian_banknote_demonetisation)
 - Aided Govt of India to seize INR 13KCr by identifying income tax evaders post demonetization
     - Led workstream to spot 18L fraud A/Cs using big data analytics from INR 15LCr cash deposits
     - Reduced 30% on ground efforts by identifying evaders with high IT notice response chance

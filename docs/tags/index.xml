@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Shaimak Reddy</title>
+    <title>Tags on Shaimak</title>
     <link>https://shaimak.github.io/tags/</link>
-    <description>Recent content in Tags on Shaimak Reddy</description>
+    <description>Recent content in Tags on Shaimak</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <atom:link href="https://shaimak.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -75,6 +75,13 @@
       <link>https://shaimak.github.io/tags/momentum/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://shaimak.github.io/tags/momentum/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sentiment Analysis</title>
+      <link>https://shaimak.github.io/tags/sentiment-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://shaimak.github.io/tags/sentiment-analysis/</guid>
       <description></description>
     </item>
     <item>

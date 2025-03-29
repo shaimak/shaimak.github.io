@@ -15,8 +15,15 @@ weight: 3
 - Erasmus Mundus Scholarship awardee for 1 year international exchange program to UPV, Spain
 
 ### Extracurricular Activities
+**Positions of Responsibility**
 - Coordinator, E-Cell: executed Harvard US-India Initiative conf. with 10+ international representatives, 400+ participants
 - Manager, Dept Fest: negotiated free 4-day US trip for winners, organized 9 events with 500+ footfall
 - Core Member , Film-Making Club: crossed 10K+ YouTube views on 4 edited films, 6 promotional videos
 - Coordinator, Techfest: led team of 5 to manage International Robotics Comp. with 50+ teams from 6 countries
 - Tech Secretary , Hostel 7 ; elected by 500+, led team to win bronze in overall Tech Championship
+
+**Water Sports**
+- Endurance Swimming for 12 hours straight covering 15.3Kms, received d Certificate of Merit
+- Winner, Water-Polo Championship (1/16 teams)
+- Member: National Sports Organization, Swimming
+
