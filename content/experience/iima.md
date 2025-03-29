@@ -8,7 +8,7 @@ showToc: false
 weight: 5
 
 --- 
-> [Project Report](https://drive.google.com/file/d/1OP2KtqALSJ68EF_p_jUu3sEgai6Qz-5P/view)
+> [Project Report](https://shaimak.github.io/experience/iima/iima-report.pdf)
 
 **Guide:** **Prof. S. Krishnamoorthy** (Professor, Dept. of Information Systems, IIM Ahmedabad)
 
