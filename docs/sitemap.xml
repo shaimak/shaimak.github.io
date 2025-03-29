@@ -2,30 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/experience/spm-samsung/</loc>
+    <loc>https://shaimak.github.io/experience/spm-samsung/</loc>
   </url><url>
-    <loc>http://localhost:1313/experience/pm-samsung/</loc>
+    <loc>https://shaimak.github.io/experience/pm-samsung/</loc>
   </url><url>
-    <loc>http://localhost:1313/experience/opera/</loc>
+    <loc>https://shaimak.github.io/experience/db/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/ai/</loc>
+    <loc>https://shaimak.github.io/experience/opera/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/business-development/</loc>
+    <loc>https://shaimak.github.io/tags/ai/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://shaimak.github.io/tags/business-development/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/data-analytics/</loc>
+    <loc>https://shaimak.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/experience/</loc>
+    <loc>https://shaimak.github.io/tags/data-analytics/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/llm/</loc>
+    <loc>https://shaimak.github.io/experience/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/ml/</loc>
+    <loc>https://shaimak.github.io/tags/ib/</loc>
   </url><url>
-    <loc>http://localhost:1313/search/</loc>
+    <loc>https://shaimak.github.io/tags/index-development/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://shaimak.github.io/tags/llm/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://shaimak.github.io/tags/ml/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/tags/momentum/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/search/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/tags/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/tags/trading/</loc>
   </url>
 </urlset>
