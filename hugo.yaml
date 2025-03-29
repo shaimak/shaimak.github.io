@@ -54,8 +54,7 @@ params:
   profileMode:
     enabled: true
     title: "Shaimak Reddy"
-    subtitle: Hi, I'm Shaimak. Please be patient while this website is being built!
-
+    subtitle: Staff Product Manager | AI & Tech Leader | Self-Hosting & Auto Enthusiast
  
     imageUrl: "home/casual-small-square.jpg"
     imageWidth: 220
