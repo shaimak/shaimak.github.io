@@ -2,13 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://shaimak.github.io/education/iimb/</loc>
+  </url><url>
     <loc>https://shaimak.github.io/experience/spm-samsung/</loc>
   </url><url>
+    <loc>https://shaimak.github.io/education/hec/</loc>
+  </url><url>
     <loc>https://shaimak.github.io/experience/pm-samsung/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/education/iitb/</loc>
   </url><url>
     <loc>https://shaimak.github.io/experience/db/</loc>
   </url><url>
     <loc>https://shaimak.github.io/experience/opera/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/education/upv/</loc>
   </url><url>
     <loc>https://shaimak.github.io/tags/ai/</loc>
   </url><url>
@@ -18,13 +26,19 @@
   </url><url>
     <loc>https://shaimak.github.io/tags/data-analytics/</loc>
   </url><url>
+    <loc>https://shaimak.github.io/education/</loc>
+  </url><url>
     <loc>https://shaimak.github.io/experience/</loc>
   </url><url>
     <loc>https://shaimak.github.io/tags/ib/</loc>
   </url><url>
+    <loc>https://shaimak.github.io/tags/iit/</loc>
+  </url><url>
     <loc>https://shaimak.github.io/tags/index-development/</loc>
   </url><url>
     <loc>https://shaimak.github.io/tags/llm/</loc>
+  </url><url>
+    <loc>https://shaimak.github.io/tags/mba/</loc>
   </url><url>
     <loc>https://shaimak.github.io/tags/ml/</loc>
   </url><url>
