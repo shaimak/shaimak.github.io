@@ -42,7 +42,10 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   hideMeta: false
+  #logo: "favicon-32x32.png"
+  label.text: "Shaimak"
   label.icon: "favicon-32x32.png"
+  label.iconHeight: 30
 
 
   # for enchanced SEO
