@@ -3,7 +3,8 @@ baseURL: "https://shaimak.github.io"
 languageCode: en-us
 title: Shaimak
 theme: PaperMod
-
+pluralizeListTitles: false
+#added to remove the plurals
 menu:
   main:
     - identifier: home
@@ -46,7 +47,6 @@ params:
   label.text: "Shaimak"
   label.icon: "favicon-32x32.png"
   label.iconHeight: 30
-
 
   # for enchanced SEO
   env: production
