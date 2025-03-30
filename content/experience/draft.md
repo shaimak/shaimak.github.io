@@ -19,3 +19,6 @@ cover:
 - **Smart Suggestions:** Introduced smart IoT cards that provide personalized hints for users to control their devices, improving traction by 3x among ecosystem users
 
 ![](/experience/spm-samsung/img1.jpg#center)
+
+<img src="/projects/homelab/homelab-logo.png#center" width="200" height="200" />
+

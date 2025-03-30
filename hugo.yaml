@@ -34,10 +34,6 @@ menu:
     #   name: Tags
     #   url: /tags
     #   weight: 60
-    # - identifier: notes
-    #   name: Notes
-    #   url: https://
-    #   weight: 70
 
 params:
   # theme
@@ -46,6 +42,8 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   hideMeta: false
+  label.icon: "favicon-32x32.png"
+
 
   # for enchanced SEO
   env: production
