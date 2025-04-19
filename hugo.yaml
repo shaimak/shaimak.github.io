@@ -1,5 +1,5 @@
 publishDir: docs
-baseURL: "https://shaimak.github.io"
+baseURL: "https://shaimakreddy.com"
 languageCode: en-us
 title: Shaimak
 theme: PaperMod
@@ -7,9 +7,8 @@ pluralizeListTitles: false
 #added to remove the plurals
 
 
-#Adding analytics  
+#Adding google analytics  
 googleAnalytics: G-6GNT92FNF8
-
 
 menu:
   main:
