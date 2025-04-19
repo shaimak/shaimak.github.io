@@ -2,37 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Education on Shaimak</title>
-    <link>https://shaimak.github.io/education/</link>
+    <link>http://localhost:1313/education/</link>
     <description>Recent content in Education on Shaimak</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <atom:link href="https://shaimak.github.io/education/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/education/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Master of Business Administration (MBA)</title>
-      <link>https://shaimak.github.io/education/iimb/</link>
+      <link>http://localhost:1313/education/iimb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://shaimak.github.io/education/iimb/</guid>
+      <guid>http://localhost:1313/education/iimb/</guid>
       <description>Indian Institute of Management, Bangalore (IIM Bangalore), India</description>
     </item>
     <item>
       <title>MBA Exchange Student</title>
-      <link>https://shaimak.github.io/education/hec/</link>
+      <link>http://localhost:1313/education/hec/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://shaimak.github.io/education/hec/</guid>
+      <guid>http://localhost:1313/education/hec/</guid>
       <description>HEC Paris, France</description>
     </item>
     <item>
       <title>Bachelor of Technology (B.Tech)</title>
-      <link>https://shaimak.github.io/education/iitb/</link>
+      <link>http://localhost:1313/education/iitb/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://shaimak.github.io/education/iitb/</guid>
+      <guid>http://localhost:1313/education/iitb/</guid>
       <description>Indian Institute of Technology,Bombay (IIT Bombay), India</description>
     </item>
     <item>
       <title>Exchange Student</title>
-      <link>https://shaimak.github.io/education/upv/</link>
+      <link>http://localhost:1313/education/upv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://shaimak.github.io/education/upv/</guid>
+      <guid>http://localhost:1313/education/upv/</guid>
       <description>Universitat Politècnica de València (UPV) , Spain</description>
     </item>
   </channel>

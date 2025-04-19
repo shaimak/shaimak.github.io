@@ -5,6 +5,12 @@ title: Shaimak
 theme: PaperMod
 pluralizeListTitles: false
 #added to remove the plurals
+
+
+#Adding analytics  
+googleAnalytics: G-6GNT92FNF8
+
+
 menu:
   main:
     - identifier: home
@@ -43,14 +49,12 @@ params:
   ShowBreadCrumbs: true
   ShowCodeCopyButtons: true
   hideMeta: false
-  #logo: "favicon-32x32.png"
-  label.text: "Shaimak"
-  label.icon: "favicon-32x32.png"
-  label.iconHeight: 30
+#  customCSS:
+#  	- css/custom.css
 
   # for enchanced SEO
   env: production
-
+  
   # Home Page
   profileMode:
     enabled: true
