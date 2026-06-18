@@ -1,34 +1,39 @@
 ---
 title: "Business Analyst"
-description: "Opera Solutions (Now ElectrifAI), India"
+description: "ElectrifAi (formerly Opera Solutions), Delhi, India"
 dateString: Jul 2015 - May 2017
 draft: false
-tags: ["Data Analytics", "ML", "Business Development", "AI"]
+tags: ["Data Analytics", "ML", "Big Data", "AI"]
 showToc: false
 weight: 4
-
 --- 
+> Client-facing B2B data analytics for the Government of India, a top-3 global payment network, and a Big-4 audit firm — translating high-stakes business problems into data-driven models and dashboards.
+>
+> *Tap any item below to read the full story.*
 
-### Client Engagement
-**Demonetization**
-> [Context: Wiki](https://en.wikipedia.org/wiki/2016_Indian_banknote_demonetisation)
-- Aided Government of India to seize ₹13,000 Crores (USD $2B) by identifying income tax evaders post demonetization
-    - Led work-stream to spot 1.8M fraud A/Cs using big data analytics from ₹15,00,000Cr (USD $230B) cash deposits
-    - Reduced 30% on ground efforts by identifying evaders with high IT notice response chance
+## Government of India — Operation Clean Money
+> [Context: 2016 demonetization](https://en.wikipedia.org/wiki/2016_Indian_banknote_demonetisation)
 
-**Due Diligence**
-- Re-evaluated USD $200M investment in pvt. energy company by conducting due diligence for PE firm
+<details class="exp">
+<summary><strong>High-Risk Account Detection</strong> — surfaced ~$3B in high-risk accounts from $175B in deposits; $130M+ seized, contributing toward $1.5B recovered.</summary>
+<div class="exp-body">
+<p>Operation Clean Money was a national-priority project: analyze $175B in post-demonetization cash deposits to identify tax evaders, under intense political scrutiny. The core data-science team's complex ML model was taking months, and government stakeholders were losing patience.</p>
+<p>I ran a parallel 80/20 track. Instead of a full model, I defined simple heuristic and outlier rules — government employees with massive cash deposits, accounts depositing 100x their declared income, petrol pumps three standard deviations above their segment norm. Within a week we isolated a 1,000-account "sore thumb" shortlist (~$3B in suspicious deposits) from millions of flagged accounts, and presented it as a "Phase 1" strike list.</p>
+<p>It gave the client an immediate win: raids on ~900 of those accounts seized $130M+ in assets ($90M in cash), and it bought the data-science team the time to complete the full model that ultimately identified $1.5B.</p>
+</div>
+</details>
 
-### Big Data Analytics
+- **Response-Likelihood Targeting:** Cut on-ground investigation effort by 30% with a model that prioritized flagged accounts by their likelihood of responding to a tax notice.
 
-- Increased USD $40M revenue by enabling 20% more purchase transactions for US Credit Card major
-- Achieved 36% lift in payment switching methods & USD $5M revenue gain via target list optimization
-- Saved 50% process time in risk mitigation by designing clustering algorithm for Big 4 Audit firm
+## Enterprise Analytics
 
-### Firm Initiatives
+<details class="exp">
+<summary><strong>Conflict-of-Interest Prototype (Big-4 auditor)</strong> — built a no-budget interactive demo in Excel/VBA; saved ~2 dev-months (~$60K).</summary>
+<div class="exp-body">
+<p>On a high-stakes engagement, the data-science team's conflict-of-interest detection algorithm was stalling, and the client — with no UI to interact with — was losing confidence. With no UI developers, budget, or time, I built a fully functional prototype in <strong>Excel + VBA</strong>: an input dashboard that simulated the back-end logic on a sample dataset and visualized the detected conflicts and relationships.</p>
+<p>The client could finally "touch and feel" the solution and gave invaluable feedback that fed the final product's requirements — and it eliminated the need for a separate web prototype, saving an estimated two man-months (~$60K) of development.</p>
+</div>
+</details>
 
-- Determined engagement gaps in 7 global offices by setting monthly process, appreciated by CHRO
-- Designed Skill-Matrix for 100+ India office employees to determine skill development requirements
-- Revamped 30-day induction program for 40+ campus recruits by collaborating with India head
-
-
+- Drove revenue for a top-3 global payment network by enabling 20% more purchase transactions, and a 36% lift in payment-switching via target-list optimization.
+- Conducted due diligence on a USD $200M energy-sector investment for a PE firm.
