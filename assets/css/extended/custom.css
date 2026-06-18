@@ -1,0 +1,62 @@
+/* Expandable experience / project details ("tap to read more") */
+details.exp {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    background: var(--entry);
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+details.exp:hover {
+    border-color: var(--secondary);
+}
+
+details.exp[open] {
+    border-color: var(--secondary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+}
+
+details.exp > summary {
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 1.5em;
+    color: var(--primary);
+    line-height: 1.5;
+}
+
+details.exp > summary::-webkit-details-marker {
+    display: none;
+}
+
+details.exp > summary::after {
+    content: "\203A"; /* › */
+    position: absolute;
+    right: 2px;
+    top: -2px;
+    font-size: 1.3em;
+    color: var(--secondary);
+    transition: transform .2s ease;
+}
+
+details.exp[open] > summary::after {
+    transform: rotate(90deg);
+}
+
+details.exp .exp-body {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border);
+    color: var(--content);
+    font-size: .95em;
+    line-height: 1.65;
+}
+
+details.exp .exp-body p {
+    margin: 0 0 .6em;
+}
+
+details.exp .exp-body p:last-child {
+    margin-bottom: 0;
+}

@@ -8,11 +8,25 @@
     <language>en-us</language>
     <atom:link href="https://shaimakreddy.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Senior Product Manager</title>
+      <title>Senior AI Product Manager</title>
       <link>https://shaimakreddy.com/experience/spm-samsung/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://shaimakreddy.com/experience/spm-samsung/</guid>
-      <description>Samsung Electronics, South Korea</description>
+      <description>Samsung Electronics, Seoul HQ, South Korea</description>
+    </item>
+    <item>
+      <title>Technical Skills</title>
+      <link>https://shaimakreddy.com/projects/skills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://shaimakreddy.com/projects/skills/</guid>
+      <description>AI/ML, product, and the stack I build on</description>
+    </item>
+    <item>
+      <title>AI Product Manager</title>
+      <link>https://shaimakreddy.com/experience/pm-samsung/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://shaimakreddy.com/experience/pm-samsung/</guid>
+      <description>Samsung Electronics, Seoul HQ, South Korea</description>
     </item>
     <item>
       <title>Contact</title>
@@ -29,18 +43,11 @@
       <description>My Self-hosted Services</description>
     </item>
     <item>
-      <title>Product Manager</title>
-      <link>https://shaimakreddy.com/experience/pm-samsung/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://shaimakreddy.com/experience/pm-samsung/</guid>
-      <description>Samsung Electronics, South Korea</description>
-    </item>
-    <item>
       <title>Business Analyst</title>
       <link>https://shaimakreddy.com/experience/opera/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://shaimakreddy.com/experience/opera/</guid>
-      <description>Opera Solutions (Now ElectrifAI), India</description>
+      <description>ElectrifAi (formerly Opera Solutions), Delhi, India</description>
     </item>
   </channel>
 </rss>
