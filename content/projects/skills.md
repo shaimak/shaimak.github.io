@@ -6,7 +6,7 @@ tags: ["AI", "ML", "Product"]
 showToc: false
 weight: 1
 --- 
-> The tools, techniques, and frameworks I work with day to day — across AI/ML, product, and a self-hosted engineering stack.
+> The tools, techniques, and frameworks I work with day to day, across AI/ML, product, and a self-hosted engineering stack.
 
 ### AI & ML
 Multi-agent orchestration · agentic task planning · LLM evaluation & benchmarking · RAG · LoRA fine-tuning · ASR / NLU / TTS
