@@ -54,6 +54,12 @@ params:
   # for enchanced SEO
   env: production
   
+  # Header logo (shown beside the site title, top-left)
+  label:
+    text: "Shaimak"
+    icon: /favicon.svg
+    iconHeight: 30
+
   # Home Page
   profileMode:
     enabled: true
