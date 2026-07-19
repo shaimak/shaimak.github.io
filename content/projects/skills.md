@@ -4,7 +4,7 @@ description: "AI/ML, product, and the stack I build on"
 draft: false
 tags: ["AI", "ML", "Product"]
 showToc: false
-weight: 1
+weight: 3
 --- 
 > The tools, techniques, and frameworks I work with day to day, across AI/ML, product, and a self-hosted engineering stack.
 

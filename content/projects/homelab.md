@@ -4,7 +4,7 @@ description: "My Self-hosted Services"
 draft: false
 tags: ["AI", "Self-hosting"]
 showToc: false
-weight: 2
+weight: 1
 cover:
     image: "projects/homelab/stack.png#center"
 --- 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Ravi — My AI Assistant | Shaimak</title>
+<title>Ravi: My AI Assistant | Shaimak</title>
 <meta name="keywords" content="AI, Self-hosting">
 <meta name="description" content="A self-hosted AI assistant on my homelab">
 <meta name="author" content="">
@@ -72,15 +72,17 @@
         }
       </script><meta property="og:url" content="https://shaimakreddy.com/projects/ravi/">
   <meta property="og:site_name" content="Shaimak">
-  <meta property="og:title" content="Ravi — My AI Assistant">
+  <meta property="og:title" content="Ravi: My AI Assistant">
   <meta property="og:description" content="A self-hosted AI assistant on my homelab">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="projects">
     <meta property="article:tag" content="AI">
     <meta property="article:tag" content="Self-Hosting">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ravi — My AI Assistant">
+    <meta property="og:image" content="https://shaimakreddy.com/projects/ravi/ravi-architecture.png#center">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://shaimakreddy.com/projects/ravi/ravi-architecture.png#center">
+<meta name="twitter:title" content="Ravi: My AI Assistant">
 <meta name="twitter:description" content="A self-hosted AI assistant on my homelab">
 
 
@@ -98,7 +100,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Ravi — My AI Assistant",
+      "name": "Ravi: My AI Assistant",
       "item": "https://shaimakreddy.com/projects/ravi/"
     }
   ]
@@ -108,16 +110,16 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Ravi — My AI Assistant",
-  "name": "Ravi — My AI Assistant",
+  "headline": "Ravi: My AI Assistant",
+  "name": "Ravi: My AI Assistant",
   "description": "A self-hosted AI assistant on my homelab",
   "keywords": [
     "AI", "Self-hosting"
   ],
-  "articleBody": " Ravi is a self-hosted AI assistant that runs on my homelab. I talk to it from Telegram or WhatsApp, and it can act on my own tools and data.\nRavi is built on OpenClaw, runs entirely on my own hardware, and uses free-tier models. Because it is self-hosted, my prompts and data stay on my machine.\nThis article is a work in progress. I will keep adding use cases here as I find more use for them.\nAsk my own knowledge base Ravi is connected to my Outline wiki, so I can ask questions over my own notes. It searches, reads, and writes pages, which means I can pull up something I wrote months ago or have Ravi draft a new page for me in plain language.\nTurn topics and books into podcasts Ravi researches a topic, or reads a chapter from a book I drop in, and generates a two-host audio podcast. The voices use Microsoft Edge TTS, which is free and sounds natural. The finished episode is sent straight to me on Telegram, so I can listen on the go.\nFind cheap flights Ravi searches live Google Flights data, so I can ask for the cheapest dates or routes in plain language and get real prices back. No API key, no manual searching.\nDrive the browser Ravi can log in, fill forms, and pull information from web pages, which lets it handle multi-step tasks on the sites I use.\nMake diagrams It generates architecture and flow diagrams from a description, useful when I want to sketch out an idea quickly.\nRemember what matters Ravi keeps a searchable memory, so I tell it a preference once and it recalls it later.\nHow I reach it WhatsApp: easy to connect and always on my phone, good for quick questions. Telegram: my preferred channel for sharing large files, since it handles the podcast audio and documents Ravi sends without the size limits. Web: a browser UI behind my single sign-on, reachable from anywhere. Ravi runs on the same stack as the rest of my homelab.\n",
-  "wordCount" : "344",
+  "articleBody": " Ravi is a self-hosted AI assistant that runs on my homelab. I talk to it from Telegram or WhatsApp, and it can act on my own tools and data.\nRavi is built on OpenClaw, runs entirely on my own hardware, and uses free-tier models (Groq and Gemini). Because it is self-hosted, my prompts and data stay on my machine. It sits behind the same Caddy reverse proxy and Authentik single sign-on as the rest of my homelab.\nThis article is a work in progress. I will keep adding use cases here as I find more use for them.\nAsk my own knowledge base Ravi is connected to my Outline wiki, so I can ask questions over my own notes and have it search, read, and write pages.\n“What did I note about the Guacamole RDP setup?” returns the answer from my wiki. “Create a page in my Ideas collection summarising this chat.” and it writes it. The workflow: Ravi runs a search across the wiki, reads the matching pages, and answers from them, so I get my own words back instead of a generic reply.\nTurn topics and books into podcasts Ravi researches a topic, or reads a chapter from a book I drop into a folder, and generates a two-host audio podcast. The voices use Microsoft Edge TTS, which is free and sounds natural.\n“Make a 15-minute podcast about the history of LLMs.” “List the chapters in this book, then make a podcast for chapter 3.” The workflow: Ravi gathers the source (web research or the book chapter), writes a two-host script, renders it to audio with MS Edge TTS, and sends the finished MP3 to me on Telegram to listen on the go.\nFind cheap flights Ravi searches live Google Flights data, so I can ask in plain language and get real prices back. No API key, no manual searching.\n“Find Seoul to Bangalore flights in late July, economy, under a set budget.” “What are the cheapest dates to fly next month?” Drive the browser Ravi can control a real browser: log in, fill forms, and pull information from pages. Useful for multi-step tasks on the sites I use.\n“Log into this site and download my latest statement.” “Pull the key details from this page and summarise them.” Make diagrams Ravi generates architecture and flow diagrams from a description, which is handy when I want to sketch an idea quickly. (The diagram at the top of this page is the kind of thing it can draft.)\nRemember what matters Ravi keeps a searchable memory, so I tell it a preference once and it recalls it later. Over time it gets a better sense of how I like things done.\nHow I reach it WhatsApp: easy to connect and always on my phone, good for quick questions. Telegram: my preferred channel for large files, since it sends the podcast audio and documents without the size limits. Web: a browser UI behind my single sign-on, reachable from anywhere. ",
+  "wordCount" : "498",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
+  "image":"https://shaimakreddy.com/projects/ravi/ravi-architecture.png#center","datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
@@ -211,7 +213,7 @@
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://shaimakreddy.com/">Home</a>&nbsp;»&nbsp;<a href="https://shaimakreddy.com/projects/">Projects</a></div>
     <h1 class="post-title entry-hint-parent">
-      Ravi — My AI Assistant
+      Ravi: My AI Assistant
     </h1>
     <div class="post-description">
       A self-hosted AI assistant on my homelab
@@ -222,29 +224,50 @@
 
 </div>
   </header> 
+<figure class="entry-cover">
+        <img loading="eager" src="https://shaimakreddy.com/projects/ravi/ravi-architecture.png#center" alt="">
+        
+</figure>
   <div class="post-content"><blockquote>
 <p>Ravi is a self-hosted AI assistant that runs on my homelab. I talk to it from Telegram or WhatsApp, and it can act on my own tools and data.</p></blockquote>
-<p>Ravi is built on <strong>OpenClaw</strong>, runs entirely on my own hardware, and uses free-tier models. Because it is self-hosted, my prompts and data stay on my machine.</p>
+<p>Ravi is built on <strong>OpenClaw</strong>, runs entirely on my own hardware, and uses free-tier models (Groq and Gemini). Because it is self-hosted, my prompts and data stay on my machine. It sits behind the same Caddy reverse proxy and Authentik single sign-on as the rest of my <a href="/projects/homelab/">homelab</a>.</p>
 <p><em>This article is a work in progress. I will keep adding use cases here as I find more use for them.</em></p>
 <h3 id="ask-my-own-knowledge-base">Ask my own knowledge base<a hidden class="anchor" aria-hidden="true" href="#ask-my-own-knowledge-base">#</a></h3>
-<p>Ravi is connected to my Outline wiki, so I can ask questions over my own notes. It searches, reads, and writes pages, which means I can pull up something I wrote months ago or have Ravi draft a new page for me in plain language.</p>
+<p>Ravi is connected to my Outline wiki, so I can ask questions over my own notes and have it search, read, and write pages.</p>
+<ul>
+<li><em>&ldquo;What did I note about the Guacamole RDP setup?&rdquo;</em> returns the answer from my wiki.</li>
+<li><em>&ldquo;Create a page in my Ideas collection summarising this chat.&rdquo;</em> and it writes it.</li>
+</ul>
+<p>The workflow: Ravi runs a search across the wiki, reads the matching pages, and answers from them, so I get my own words back instead of a generic reply.</p>
 <h3 id="turn-topics-and-books-into-podcasts">Turn topics and books into podcasts<a hidden class="anchor" aria-hidden="true" href="#turn-topics-and-books-into-podcasts">#</a></h3>
-<p>Ravi researches a topic, or reads a chapter from a book I drop in, and generates a two-host audio podcast. The voices use <strong>Microsoft Edge TTS</strong>, which is free and sounds natural. The finished episode is sent straight to me on Telegram, so I can listen on the go.</p>
+<p>Ravi researches a topic, or reads a chapter from a book I drop into a folder, and generates a two-host audio podcast. The voices use <strong>Microsoft Edge TTS</strong>, which is free and sounds natural.</p>
+<ul>
+<li><em>&ldquo;Make a 15-minute podcast about the history of LLMs.&rdquo;</em></li>
+<li><em>&ldquo;List the chapters in this book, then make a podcast for chapter 3.&rdquo;</em></li>
+</ul>
+<p>The workflow: Ravi gathers the source (web research or the book chapter), writes a two-host script, renders it to audio with MS Edge TTS, and sends the finished MP3 to me on Telegram to listen on the go.</p>
 <h3 id="find-cheap-flights">Find cheap flights<a hidden class="anchor" aria-hidden="true" href="#find-cheap-flights">#</a></h3>
-<p>Ravi searches live <strong>Google Flights</strong> data, so I can ask for the cheapest dates or routes in plain language and get real prices back. No API key, no manual searching.</p>
+<p>Ravi searches live <strong>Google Flights</strong> data, so I can ask in plain language and get real prices back. No API key, no manual searching.</p>
+<ul>
+<li><em>&ldquo;Find Seoul to Bangalore flights in late July, economy, under a set budget.&rdquo;</em></li>
+<li><em>&ldquo;What are the cheapest dates to fly next month?&rdquo;</em></li>
+</ul>
 <h3 id="drive-the-browser">Drive the browser<a hidden class="anchor" aria-hidden="true" href="#drive-the-browser">#</a></h3>
-<p>Ravi can log in, fill forms, and pull information from web pages, which lets it handle multi-step tasks on the sites I use.</p>
+<p>Ravi can control a real browser: log in, fill forms, and pull information from pages. Useful for multi-step tasks on the sites I use.</p>
+<ul>
+<li><em>&ldquo;Log into this site and download my latest statement.&rdquo;</em></li>
+<li><em>&ldquo;Pull the key details from this page and summarise them.&rdquo;</em></li>
+</ul>
 <h3 id="make-diagrams">Make diagrams<a hidden class="anchor" aria-hidden="true" href="#make-diagrams">#</a></h3>
-<p>It generates architecture and flow diagrams from a description, useful when I want to sketch out an idea quickly.</p>
+<p>Ravi generates architecture and flow diagrams from a description, which is handy when I want to sketch an idea quickly. (The diagram at the top of this page is the kind of thing it can draft.)</p>
 <h3 id="remember-what-matters">Remember what matters<a hidden class="anchor" aria-hidden="true" href="#remember-what-matters">#</a></h3>
-<p>Ravi keeps a searchable memory, so I tell it a preference once and it recalls it later.</p>
+<p>Ravi keeps a searchable memory, so I tell it a preference once and it recalls it later. Over time it gets a better sense of how I like things done.</p>
 <h3 id="how-i-reach-it">How I reach it<a hidden class="anchor" aria-hidden="true" href="#how-i-reach-it">#</a></h3>
 <ul>
 <li><strong>WhatsApp</strong>: easy to connect and always on my phone, good for quick questions.</li>
-<li><strong>Telegram</strong>: my preferred channel for sharing large files, since it handles the podcast audio and documents Ravi sends without the size limits.</li>
+<li><strong>Telegram</strong>: my preferred channel for large files, since it sends the podcast audio and documents without the size limits.</li>
 <li><strong>Web</strong>: a browser UI behind my single sign-on, reachable from anywhere.</li>
 </ul>
-<p>Ravi runs on the same stack as the rest of my <a href="/projects/homelab/">homelab</a>.</p>
 
 
   </div>
