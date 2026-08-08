@@ -100,6 +100,7 @@
   </div>
   <nav>
     <button data-v="reg" class="active">Feature registry</button>
+    <button data-v="dev">Developer view</button>
     <button data-v="sr">Smart Reply · before / after</button>
     <button data-v="how">How the badge works</button>
     <button data-v="feed">Live monitor</button>
@@ -125,6 +126,63 @@
     <tbody id="regbody"></tbody>
   </table>
   <p class="note">Badge = output cleared our bar for its risk tier, not a statement about how it was built. A team can build on the platform (easy path) or bring its own plumbing and still earn the badge by passing the gate. <span class="kbd">Click Smart Reply</span> to see a revoked feature and its rehab.</p>
+</section>
+
+<!-- ============ DEVELOPER VIEW ============ -->
+<section class="view" id="dev">
+  <h1>Build on Lintel AI — surface-team view</h1>
+  <p class="lead">What a surface team sees when it opens the platform. This is the enablement side of the strategy: no mandate, we win when clearing our bar is the fastest way to ship trustworthy AI. Shown here as Marketing, shipping the lead-qual / leasing agent (#5).</p>
+  <div class="demo-banner">Viewing as <b style="color:var(--ink)">Marketing</b> &nbsp;·&nbsp; feature <b style="color:var(--ink)">Lead-qual / leasing agent (#5)</b> &nbsp;·&nbsp; <span class="chip b-warn">Badge: Monitoring</span></div>
+
+  <h2>Ship a feature — the self-serve path</h2>
+  <div class="flow">
+    <div class="step"><div class="t">1 · Route your model</div><div class="s">Gateway. gpt-4o-mini primary, Claude fallback. <span class="b-ok">✓ set</span></div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="t">2 · Register prompts</div><div class="s">Prompt store. 12 prompts, v7. <span class="b-ok">✓ done</span></div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="t">3 · Attach golden set</div><div class="s">240 cases, sampled from Snowflake. <span class="b-ok">✓ ready</span></div></div>
+    <div class="arrow">→</div>
+    <div class="step gate"><div class="t">4 · Run the gate</div><div class="s">Last run: <b>PASS</b> · 3m ago</div></div>
+    <div class="arrow">→</div>
+    <div class="step badge"><div class="t">5 · Badge</div><div class="s">Granted · Monitoring live traffic</div></div>
+  </div>
+
+  <h2>Your last gate run</h2>
+  <div class="two">
+    <div class="panel">
+      <h3>Safety red-lines — any hit is a hard fail</h3>
+      <div class="metric" style="margin-top:12px"><span class="dim" style="width:190px">PII in output</span><span class="chip b-ok">0 hits · pass</span></div>
+      <div class="metric"><span class="dim" style="width:190px">Fair housing (steering)</span><span class="chip b-ok">0 hits · pass</span></div>
+      <div class="metric"><span class="dim" style="width:190px">Recording consent by state</span><span class="chip b-ok">0 hits · pass</span></div>
+      <p class="note" style="margin-top:16px">These are set and owned by the platform, not by you. Voice adds the consent line automatically because your feature is tagged voice.</p>
+    </div>
+    <div class="panel">
+      <h3>Quality by risk tier — bar owned by platform</h3>
+      <div class="metric" style="margin-top:12px"><span class="dim" style="width:130px">Relevance</span><div class="bar" style="flex:1"><i style="width:82%;background:var(--ok)"></i></div><span class="v mono">82</span><span class="dim mono" style="font-size:11px">/ 80</span></div>
+      <div class="metric"><span class="dim" style="width:130px">Tone</span><div class="bar" style="flex:1"><i style="width:88%;background:var(--ok)"></i></div><span class="v mono">88</span><span class="dim mono" style="font-size:11px">/ 80</span></div>
+      <div class="metric"><span class="dim" style="width:130px">Escalation acc.</span><div class="bar" style="flex:1"><i style="width:79%;background:var(--ok)"></i></div><span class="v mono">79</span><span class="dim mono" style="font-size:11px">/ 75</span></div>
+      <div class="metric" style="margin-top:14px"><span class="dim" style="width:130px">Overall</span><span class="chip b-ok">PASS → badge granted</span></div>
+      <p class="note" style="margin-top:12px">Fall below a bar on live traffic and the badge auto-revokes until you re-pass. You see it here first.</p>
+    </div>
+  </div>
+
+  <h2>Two ways to earn it — your call</h2>
+  <div class="two">
+    <div class="panel after">
+      <span class="chip b-ok">Recommended</span>
+      <h3 style="margin-top:12px">Build on the platform</h3>
+      <p class="muted" style="margin:6px 0 12px">Gateway, eval harness, context runtime, and observability out of the box. Fastest path to a badge. One thin SDK call.</p>
+      <div class="msg mono" style="font-size:12px">const reply = await <b style="color:var(--brand2)">lintel</b>.generate({<br>&nbsp;&nbsp;feature: "lead-qual",<br>&nbsp;&nbsp;input,<br>});<br><span class="dim">// routed, gated, and badged automatically</span></div>
+    </div>
+    <div class="panel">
+      <span class="chip b-grey">Also allowed</span>
+      <h3 style="margin-top:12px">Bring your own plumbing</h3>
+      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to our gate and earn the same badge. More work, no mandate to use us — we win by being worth choosing.</p>
+      <div class="metric"><span class="dim" style="width:150px">Time to first badge</span><span class="mono">days, not a quarter</span></div>
+      <div class="metric"><span class="dim" style="width:150px">Your feature this month</span><span class="mono">$0.22 / conversation · 4.1k runs</span></div>
+    </div>
+  </div>
+  <p class="note">This screen is the whole no-mandate bet. The badge is the carrot, the gate is the bar, and the SDK is why the easy path is the one teams actually take.</p>
 </section>
 
 <!-- ============ SMART REPLY ============ -->
