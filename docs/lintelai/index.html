@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lintel AI — Internal Console</title>
+<title>Lintel AI · Internal Console</title>
 <style>
   :root{
     --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#2a2f3a;
@@ -113,7 +113,7 @@
 <!-- ============ REGISTRY ============ -->
 <section class="view active" id="reg">
   <h1>Feature registry</h1>
-  <p class="lead">Every AI feature at Lintel, and the one thing that is true of all of them: whether it currently clears our trust bar. The badge is granted per feature, monitored on live traffic, and revocable. We own the mark. Surface teams own the features.</p>
+  <p class="lead">Every AI feature at Lintel, and the one thing that holds across all of them: whether it currently clears our trust bar. We grant the badge per feature and monitor it on live traffic, so a feature that drifts loses it. We own the mark. Surface teams own the features.</p>
   <div class="cards">
     <div class="card"><div class="k">3</div><div class="l">Certified · badge live</div><div class="d b-ok" style="display:inline-block;padding:2px 0">▲ on platform</div></div>
     <div class="card"><div class="k">2</div><div class="l">Monitoring · on the bar</div><div class="d b-warn" style="display:inline-block;padding:2px 0">watching drift</div></div>
@@ -125,16 +125,16 @@
     <thead><tr><th>Feature</th><th>Owning team</th><th>Badge</th><th>Quality vs bar</th><th>Adoption</th><th>Unit cost</th></tr></thead>
     <tbody id="regbody"></tbody>
   </table>
-  <p class="note">Badge = output cleared our bar for its risk tier, not a statement about how it was built. A team can build on the platform (easy path) or bring its own plumbing and still earn the badge by passing the gate. <span class="kbd">Click Smart Reply</span> to see a revoked feature and its rehab.</p>
+  <p class="note">The badge says the output cleared our bar for its risk tier. It says nothing about how the feature was built. A team can build on the platform (easy path) or bring its own plumbing and still earn the badge by passing the gate. <span class="kbd">Click Smart Reply</span> to see a revoked feature and its rehab.</p>
 </section>
 
 <!-- ============ DEVELOPER VIEW ============ -->
 <section class="view" id="dev">
-  <h1>Build on Lintel AI — surface-team view</h1>
+  <h1>Build on Lintel AI: the surface-team view</h1>
   <p class="lead">What a surface team sees when it opens the platform. This is the enablement side of the strategy: no mandate, we win when clearing our bar is the fastest way to ship trustworthy AI. Shown here as Marketing, shipping the lead-qual / leasing agent (#5).</p>
   <div class="demo-banner">Viewing as <b style="color:var(--ink)">Marketing</b> &nbsp;·&nbsp; feature <b style="color:var(--ink)">Lead-qual / leasing agent (#5)</b> &nbsp;·&nbsp; <span class="chip b-warn">Badge: Monitoring</span></div>
 
-  <h2>Ship a feature — the self-serve path</h2>
+  <h2>Ship a feature: the self-serve path</h2>
   <div class="flow">
     <div class="step"><div class="t">1 · Route your model</div><div class="s">Gateway. gpt-4o-mini primary, Claude fallback. <span class="b-ok">✓ set</span></div></div>
     <div class="arrow">→</div>
@@ -150,14 +150,14 @@
   <h2>Your last gate run</h2>
   <div class="two">
     <div class="panel">
-      <h3>Safety red-lines — any hit is a hard fail</h3>
+      <h3>Safety red-lines. Any hit is a hard fail</h3>
       <div class="metric" style="margin-top:12px"><span class="dim" style="width:190px">PII in output</span><span class="chip b-ok">0 hits · pass</span></div>
       <div class="metric"><span class="dim" style="width:190px">Fair housing (steering)</span><span class="chip b-ok">0 hits · pass</span></div>
       <div class="metric"><span class="dim" style="width:190px">Recording consent by state</span><span class="chip b-ok">0 hits · pass</span></div>
-      <p class="note" style="margin-top:16px">These are set and owned by the platform, not by you. Voice adds the consent line automatically because your feature is tagged voice.</p>
+      <p class="note" style="margin-top:16px">The platform sets and owns these. Your team does not. Voice adds the consent line automatically because your feature is tagged voice.</p>
     </div>
     <div class="panel">
-      <h3>Quality by risk tier — bar owned by platform</h3>
+      <h3>Quality by risk tier. Bar owned by the platform</h3>
       <div class="metric" style="margin-top:12px"><span class="dim" style="width:130px">Relevance</span><div class="bar" style="flex:1"><i style="width:82%;background:var(--ok)"></i></div><span class="v mono">82</span><span class="dim mono" style="font-size:11px">/ 80</span></div>
       <div class="metric"><span class="dim" style="width:130px">Tone</span><div class="bar" style="flex:1"><i style="width:88%;background:var(--ok)"></i></div><span class="v mono">88</span><span class="dim mono" style="font-size:11px">/ 80</span></div>
       <div class="metric"><span class="dim" style="width:130px">Escalation acc.</span><div class="bar" style="flex:1"><i style="width:79%;background:var(--ok)"></i></div><span class="v mono">79</span><span class="dim mono" style="font-size:11px">/ 75</span></div>
@@ -166,7 +166,7 @@
     </div>
   </div>
 
-  <h2>Two ways to earn it — your call</h2>
+  <h2>Two ways to earn it. Your call</h2>
   <div class="two">
     <div class="panel after">
       <span class="chip b-ok">Recommended</span>
@@ -177,17 +177,17 @@
     <div class="panel">
       <span class="chip b-grey">Also allowed</span>
       <h3 style="margin-top:12px">Bring your own plumbing</h3>
-      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to our gate and earn the same badge. More work, no mandate to use us — we win by being worth choosing.</p>
-      <div class="metric"><span class="dim" style="width:150px">Time to first badge</span><span class="mono">days, not a quarter</span></div>
+      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to our gate and earn the same badge. More work, and no mandate to use us. We win by being worth choosing.</p>
+      <div class="metric"><span class="dim" style="width:150px">Time to first badge</span><span class="mono">under a week</span></div>
       <div class="metric"><span class="dim" style="width:150px">Your feature this month</span><span class="mono">$0.22 / conversation · 4.1k runs</span></div>
     </div>
   </div>
-  <p class="note">This screen is the whole no-mandate bet. The badge is the carrot, the gate is the bar, and the SDK is why the easy path is the one teams actually take.</p>
+  <p class="note">This screen is the whole no-mandate bet. The badge is the carrot and the gate is the bar. The SDK is why the easy path is the one teams actually take.</p>
 </section>
 
 <!-- ============ SMART REPLY ============ -->
 <section class="view" id="sr">
-  <h1>Smart Reply — the proof case</h1>
+  <h1>Smart Reply: the proof case</h1>
   <p class="lead">Smart Reply is the feature that fails: 14% adoption, the priciest of the three at $0.40/property/month, "quality varies widely." It has no way to catch a bad suggestion, so quality drifts and the badge is revoked. Fixing it is how the eval bar earns its keep, and it yields the reusable chat capability the leasing agent reuses at 6 months.</p>
   <div class="two">
     <div class="panel before">
@@ -203,13 +203,13 @@
       <span class="chip b-ok">After · on the bar, monitored</span>
       <h3 style="margin-top:12px">Gated on a golden set. Below-bar drafts never surface.</h3>
       <div class="msg"><span class="tag muted">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
-      <div class="msg" style="border-color:#1c4a37"><span class="tag b-ok" style="padding:2px 6px;border-radius:5px">Suggested reply · passed gate</span><br>That sounds like an active leak — please shut off the valve under the sink if you can reach it, and put a towel down. I've logged this as an <b>urgent maintenance request</b> and a plumber will be assigned today. I'll confirm the time here.</div>
+      <div class="msg" style="border-color:#1c4a37"><span class="tag b-ok" style="padding:2px 6px;border-radius:5px">Suggested reply · passed gate</span><br>That sounds like an active leak. Please shut off the valve under the sink if you can reach it, and put a towel down. I've logged this as an <b>urgent maintenance request</b> and a plumber will be assigned today. I'll confirm the time here.</div>
       <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:91%;background:var(--ok)"></i></div><span class="v mono">91</span></div>
       <div class="metric"><span class="dim" style="width:120px">Safety red-lines</span><span class="chip b-ok">0 hits</span></div>
       <div class="metric"><span class="dim" style="width:120px">Below-bar drafts</span><span class="mono">suppressed before send</span></div>
     </div>
   </div>
-  <p class="note">The bar is measured on a versioned golden set with inputs sampled at random from real conversations in Snowflake, so the team cannot cherry-pick the test. Production monitoring on live traffic is the ungameable backstop — if quality drifts after launch, the badge is pulled automatically.</p>
+  <p class="note">The bar is measured on a versioned golden set with inputs sampled at random from real conversations in Snowflake, so the team cannot cherry-pick the test. Production monitoring on live traffic is the ungameable backstop. If quality drifts after launch, the badge is pulled automatically.</p>
 </section>
 
 <!-- ============ HOW ============ -->
@@ -247,7 +247,7 @@
   <p class="lead">The platform is invisible until something moves. This is what the AI team watches: badge state changes, drift, cost, and the leading indicators that tell us the strategy is failing before the damage lands.</p>
   <div class="cards">
     <div class="card"><div class="k">+38%</div><div class="l">Platform adoption · 90d</div><div class="d b-ok">listings drove the first read</div></div>
-    <div class="card"><div class="k">−41%</div><div class="l">Time-to-ship AI · surface team</div><div class="d b-ok">platform is leverage, not overhead</div></div>
+    <div class="card"><div class="k">−41%</div><div class="l">Time-to-ship AI · surface team</div><div class="d b-ok">the platform is real leverage here</div></div>
     <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-warn">Smart Reply, pre-fix</div></div>
     <div class="card"><div class="k">+2.1pt</div><div class="l">AI-cohort net retention delta</div><div class="d b-ok">the business backstop</div></div>
   </div>
@@ -257,10 +257,10 @@
 
 <!-- ============ MAP ============ -->
 <section class="view" id="map">
-  <h1>Portfolio map — value vs trust-readiness</h1>
+  <h1>Portfolio map: value vs trust-readiness</h1>
   <p class="lead">Where each item in the 10-feature backlog sits, and why the roadmap ships in this order. Foundation first. High-value, trust-ready features get enabled early. High-value but not-yet-trustworthy features wait for the bar. High-risk-low-value gets rejected.</p>
   <div class="grid2x2" id="grid">
-    <div class="quad q-tl">Defer — build the bar first</div>
+    <div class="quad q-tl">Defer: build the bar first</div>
     <div class="quad q-tr">Ship / enable now</div>
     <div class="quad q-bl">Reject / backlog</div>
     <div class="quad q-br">Low stakes, easy win</div>
@@ -268,11 +268,11 @@
     <div class="axis" style="bottom:8px;left:50%;transform:translateX(-50%)">Trust-readiness (can we hit a bar today?) →</div>
   </div>
   <div class="legend">
-    <span><i class="sw" style="background:var(--ok)"></i> Enable / certify (90d–6mo)</span>
+    <span><i class="sw" style="background:var(--ok)"></i> Enable / certify (90d to 6mo)</span>
     <span><i class="sw" style="background:var(--warn)"></i> Gate-only or 12mo</span>
     <span><i class="sw" style="background:var(--bad)"></i> Defer / reject</span>
   </div>
-  <p class="note">Reject #4 (screening rejection letters): high fair-housing and legal risk, low impact — a standing no. Defer #10, #1, #8 until the bar exists or hand the predictive ML to data science and gate the output.</p>
+  <p class="note">Reject #4 (screening rejection letters): high fair-housing and legal risk, low impact. A standing no. Defer #10, #1, #8 until the bar exists or hand the predictive ML to data science and gate the output.</p>
 </section>
 
 </div></main>
@@ -288,7 +288,7 @@ const F = [
   {name:"Owner reports commentary", team:"Reporting", state:"grey", badge:"Queued · 12mo", q:0, bar:80, note:"#2", adopt:"—", cost:"—"},
   {name:"Voice maintenance intake", team:"Maintenance", state:"grey", badge:"Queued · 12mo", q:0, bar:85, note:"#7 · 2nd voice consumer → shared capability", adopt:"—", cost:"—"},
   {name:"Renewal pricing on comps", team:"Lease", state:"grey", badge:"Gate-only", q:0, bar:0, note:"#3 · data science builds, we gate + explain", adopt:"—", cost:"—"},
-  {name:"NL financial reports", team:"Accounting", state:"bad", badge:"Deferred", q:0, bar:90, note:"#10 · highest money risk — needs the bar", adopt:"—", cost:"—"},
+  {name:"NL financial reports", team:"Accounting", state:"bad", badge:"Deferred", q:0, bar:90, note:"#10 · highest money risk, needs the bar", adopt:"—", cost:"—"},
   {name:"NL search across conversations", team:"CRM", state:"bad", badge:"Deferred", q:0, bar:80, note:"#1 · the Smart Reply shape", adopt:"—", cost:"—"},
   {name:"Predictive churn scoring", team:"CS", state:"bad", badge:"Deferred", q:0, bar:0, note:"#8 · predictive ML, charter mismatch", adopt:"—", cost:"—"},
   {name:"Screening rejection letters", team:"Screening", state:"bad", badge:"Rejected", q:0, bar:0, note:"#4 · fair-housing + legal risk", adopt:"—", cost:"—"},
@@ -312,12 +312,12 @@ F.forEach(f=>{
 
 // ---- live monitor feed ----
 const EV = [
-  {t:"09:14", c:"var(--bad)", h:"Smart Reply — badge revoked", s:"live relevance fell to 61, below the 70 bar. Auto-pulled. Comms + forward-deployed eng paged."},
-  {t:"11:02", c:"var(--warn)", h:"Smart Reply — rehab shipped, back on the bar", s:"golden set re-gated at 76. Badge → Monitoring. Watching 7-day drift before Certified."},
-  {t:"Mon", c:"var(--ok)", h:"Listing descriptions — Certified", s:"#6 cleared the low-risk bar first try. Earliest customer-visible adoption read."},
-  {t:"Tue", c:"var(--warn)", h:"Leasing agent — voice red-lines added", s:"recording-consent by state + fair-housing in live speech now hard-fail checks."},
-  {t:"Wed", c:"var(--ok)", h:"Gateway — model swap, zero feature rewrites", s:"routed 30% of eval traffic to a cheaper model that beat the incumbent. Config flip only."},
-  {t:"Thu", c:"var(--bad)", h:"Screening letters (#4) — rejected at intake", s:"fair-housing + legal risk, low impact. Standing no, logged for the CPO."},
+  {t:"09:14", c:"var(--bad)", h:"Smart Reply: badge revoked", s:"live relevance fell to 61, below the 70 bar. Auto-pulled. Comms + forward-deployed eng paged."},
+  {t:"11:02", c:"var(--warn)", h:"Smart Reply: rehab shipped, back on the bar", s:"golden set re-gated at 76. Badge → Monitoring. Watching 7-day drift before Certified."},
+  {t:"Mon", c:"var(--ok)", h:"Listing descriptions: Certified", s:"#6 cleared the low-risk bar first try. Earliest customer-visible adoption read."},
+  {t:"Tue", c:"var(--warn)", h:"Leasing agent: voice red-lines added", s:"recording-consent by state + fair-housing in live speech now hard-fail checks."},
+  {t:"Wed", c:"var(--ok)", h:"Gateway: model swap, zero feature rewrites", s:"routed 30% of eval traffic to a cheaper model that beat the incumbent. Config flip only."},
+  {t:"Thu", c:"var(--bad)", h:"Screening letters (#4): rejected at intake", s:"fair-housing + legal risk, low impact. Standing no, logged for the CPO."},
 ];
 const fl = document.getElementById("feedlist");
 EV.forEach(e=>{
