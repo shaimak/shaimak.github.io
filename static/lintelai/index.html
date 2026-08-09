@@ -86,6 +86,8 @@
   .feed li:last-child{border:0} .feed .time{color:var(--dim);min-width:66px;font-size:12px}
   .dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:0 0 auto}
   .note{font-size:12px;color:var(--mut);margin-top:14px;max-width:840px}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0 0;font-size:12px;color:var(--mut)}
+  .legend > span{display:inline-flex;align-items:center;gap:7px}
   .kbd{font-size:11px;color:var(--mut);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
   .demo-banner{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;
     color:var(--mut);font-size:12px;margin:0 0 20px}
@@ -118,7 +120,7 @@
   <p class="lead">Every AI feature at Lintel, and the one thing that holds across all of them: whether it currently clears our trust bar. We grant the "Powered by Lintel AI" badge per feature and monitor it on live traffic, so a feature that drifts loses it. We own the mark. Surface teams own the features.</p>
   <div class="cards">
     <div class="card"><div class="k">3</div><div class="l">Certified · badge live</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">on platform</div></div>
-    <div class="card"><div class="k">2</div><div class="l">Monitoring · on the bar</div><div class="d b-warn" style="display:inline-block;padding:2px 7px">watching drift</div></div>
+    <div class="card"><div class="k">2</div><div class="l">Provisional · in watch window</div><div class="d b-warn" style="display:inline-block;padding:2px 7px">just (re-)earned</div></div>
     <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-bad" style="display:inline-block;padding:2px 7px">Smart Reply, pre-fix</div></div>
     <div class="card"><div class="k">92%</div><div class="l">Certified traffic passing</div><div class="d dim">rolling 7-day</div></div>
   </div>
@@ -127,30 +129,53 @@
     <thead><tr><th>Feature</th><th>Owning team</th><th>Badge</th><th>Quality vs bar</th><th>Adoption</th><th>Unit cost</th></tr></thead>
     <tbody id="regbody"></tbody>
   </table>
-  <p class="note">The badge says the output cleared our bar for its risk tier. It says nothing about how the feature was built. A team can build on the platform (easy path) or bring its own plumbing and still earn the badge by passing the gate.</p>
+  <div class="legend">
+    <span><span class="chip b-ok">Certified</span> earned and holding above the bar</span>
+    <span><span class="chip b-warn">Provisional</span> just (re-)earned, in the watch window</span>
+    <span><span class="chip b-bad">Revoked</span> dropped below the bar, badge pulled</span>
+  </div>
+  <p class="note">Monitoring runs under all of these, so it is not a state on its own. A Certified feature that starts trending toward the bar is flagged <b>At risk</b> before it is ever revoked. The badge also says nothing about how a feature was built: a team can build on the platform or bring its own plumbing and still earn it by passing the gate.</p>
 </section>
 
 <!-- ============ DEVELOPER PORTAL ============ -->
 <section class="view" id="dev">
   <p class="eyebrow">Surface-team view</p>
   <h1>Developer portal</h1>
-  <p class="lead">What a surface team sees when it builds an AI feature on Lintel. Route a model, register your prompts, build a test set, run the gate, and ship with the badge. Shown here as Marketing building the lead-qual / leasing agent (#5).</p>
-  <div class="demo-banner">Viewing as <b style="color:var(--ink)">Marketing</b> &nbsp;·&nbsp; feature <b style="color:var(--ink)">Lead-qual / leasing agent (#5)</b> &nbsp;·&nbsp; <span class="chip b-warn">Badge: Monitoring</span></div>
+  <p class="lead">What a surface team sees when it builds an AI feature on Lintel. Route a model, register prompts, connect your data, build a test set, submit to the gate, and ship with the badge. Shown here as Marketing building the lead-qual / leasing agent (#5).</p>
+  <div class="demo-banner">Viewing as <b style="color:var(--ink)">Marketing</b> &nbsp;·&nbsp; feature <b style="color:var(--ink)">Lead-qual / leasing agent (#5)</b> &nbsp;·&nbsp; <span class="chip b-warn">Badge: Provisional</span></div>
 
-  <h2>Ship a feature: five steps</h2>
+  <h2>Ship a feature: six steps</h2>
   <div class="flow">
     <div class="step"><div class="t">1 · Route your model</div><div class="s">gpt-4o-mini primary · Claude fallback <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
     <div class="step"><div class="t">2 · Register prompts</div><div class="s">12 prompts · v7 <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step gate"><div class="t">3 · Test set</div><div class="s">240 cases · ideal answers uploaded <span class="b-ok">✓</span></div></div>
+    <div class="step"><div class="t">3 · Connect knowledge</div><div class="s">unit · lease · tenant · maintenance <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step gate"><div class="t">4 · Run the gate</div><div class="s"><b>PASS</b> · 3m ago</div></div>
+    <div class="step"><div class="t">4 · Test set</div><div class="s">240 cases · ideal answers uploaded <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step badge"><div class="t">5 · Badge</div><div class="s">Granted · monitored live</div></div>
+    <div class="step gate"><div class="t">5 · Submit to gate</div><div class="s"><b>PASS</b> · 3m ago</div></div>
+    <div class="arrow">→</div>
+    <div class="step badge"><div class="t">6 · Badge</div><div class="s">Granted · monitored live</div></div>
+  </div>
+  <p class="note">Steps 1–4 are yours to configure. Step 5 hands your feature to the gate, which the platform owns and you do not control. See the <b>Eval gate</b> tab for how that decision is made.</p>
+
+  <h2>Step 3 · Connect knowledge</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">Choose which Lintel data the feature can read. Retrieval grounds the model in the firm's real records instead of guessing. The platform enforces the permission scope and masks tenant PII before anything reaches the model.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+      <span class="chip b-ok">✓ Unit records</span>
+      <span class="chip b-ok">✓ Lease terms</span>
+      <span class="chip b-ok">✓ Tenant history</span>
+      <span class="chip b-ok">✓ Maintenance logs</span>
+      <span class="chip b-grey">Owner financials · off</span>
+      <span class="chip b-grey">Screening data · off</span>
+    </div>
+    <div class="metric"><span class="dim" style="width:160px">Permission scope</span><span>Firms on Tier 2–3 with leasing AI enabled</span></div>
+    <div class="metric"><span class="dim" style="width:160px">Tenant PII</span><span>masked before it reaches the model</span></div>
   </div>
 
-  <h2>Step 3 · Build your test set</h2>
+  <h2>Step 4 · Build your test set</h2>
   <div class="panel">
     <p class="muted" style="margin:0 0 14px">The platform pulls a random sample from your feature's live data in Snowflake. You do not choose the cases. Download the set, add the ideal answer for each, and upload it back. That becomes your versioned golden set, and the gate scores every run against it.</p>
     <table style="border-radius:10px">
@@ -202,7 +227,7 @@
     <div class="arrow">→</div>
     <div class="step gate"><div class="t">Gate scores the run</div><div class="s">Safety red-lines, then quality vs the tier bar</div></div>
     <div class="arrow">→</div>
-    <div class="step badge"><div class="t">Badge + live monitoring</div><div class="s">Re-checked on production traffic</div></div>
+    <div class="step badge"><div class="t">Badge + live monitoring</div><div class="s">Re-scored on a sample of production traffic</div></div>
   </div>
 
   <h2>Last gate run · Lead-qual / leasing agent (#5)</h2>
@@ -235,8 +260,8 @@
       <p class="muted" style="margin:6px 0 0">The scoring dimensions, the safety red-lines, and the thresholds are set and owned by the platform. Teams supply only the domain ideal answers, and we audit them.</p>
     </div>
     <div class="panel guard">
-      <h3>Continuous monitoring</h3>
-      <p class="muted" style="margin:6px 0 0">Every badge is re-checked on live production traffic. Quality that slips after launch pulls the badge on its own. The gate certifies live behavior, not just launch day.</p>
+      <h3>Sampled monitoring</h3>
+      <p class="muted" style="margin:6px 0 0">Safety red-lines run inline on every request. Quality is re-scored on a rolling sample of live traffic, not every call, so drift after launch pulls the badge without doubling inference cost.</p>
     </div>
   </div>
 
@@ -328,7 +353,7 @@
     <div class="arrow">→</div>
     <div class="step"><div class="t">Gateway</div><div class="s">Routes to the model, falls back on failure</div></div>
     <div class="arrow">→</div>
-    <div class="step"><div class="t">Observability</div><div class="s">Cost, latency, and quality drift measured on real traffic</div></div>
+    <div class="step"><div class="t">Observability</div><div class="s">Cost and latency on every call; quality drift on a sampled slice</div></div>
     <div class="arrow">→</div>
     <div class="step revoke"><div class="t">Drift below bar → revoke</div><div class="s">This feature loses its badge, the others keep theirs</div></div>
   </div>
@@ -346,8 +371,8 @@ const F = [
   {name:"Lease parser", team:"Leasing", state:"ok", badge:"Certified", q:92, bar:90, note:"shipped · works", adopt:"92% of leases", cost:"$0.18 / lease"},
   {name:"Maintenance categorization", team:"Maintenance", state:"ok", badge:"Certified", q:88, bar:85, note:"shipped · works silently", adopt:"100% of requests", cost:"$0.02 / request"},
   {name:"Listing descriptions", team:"Listings", state:"ok", badge:"Certified", q:94, bar:80, note:"#6 · the 90d visible win", adopt:"61% of new listings", cost:"$0.03 / listing"},
-  {name:"Smart Reply", team:"Comms", state:"warn", badge:"Monitoring", q:76, bar:70, note:"shipped · the proof case, rehabbed", adopt:"14% of messages", cost:"$0.40 / property / mo", view:"sr"},
-  {name:"Lead-qual / leasing agent", team:"Marketing", state:"warn", badge:"Monitoring", q:82, bar:80, note:"#5 · the EliseAI answer · chat + voice", adopt:"ramping", cost:"$0.22 / conversation"},
+  {name:"Smart Reply", team:"Comms", state:"warn", badge:"Provisional", q:76, bar:70, note:"shipped · the proof case, rehabbed", adopt:"14% of messages", cost:"$0.40 / property / mo", view:"sr"},
+  {name:"Lead-qual / leasing agent", team:"Marketing", state:"warn", badge:"Provisional", q:82, bar:80, note:"#5 · the EliseAI answer · chat + voice", adopt:"ramping", cost:"$0.22 / conversation"},
   {name:"Owner reports commentary", team:"Reporting", state:"grey", badge:"Queued · 12mo", q:0, bar:80, note:"#2", adopt:"—", cost:"—"},
   {name:"Voice maintenance intake", team:"Maintenance", state:"grey", badge:"Queued · 12mo", q:0, bar:85, note:"#7 · 2nd voice consumer → shared capability", adopt:"—", cost:"—"},
   {name:"Renewal pricing on comps", team:"Lease", state:"grey", badge:"Gate-only", q:0, bar:0, note:"#3 · data science builds, we gate + explain", adopt:"—", cost:"—"},
