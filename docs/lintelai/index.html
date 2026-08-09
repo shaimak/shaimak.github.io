@@ -6,105 +6,106 @@
 <title>Lintel AI · Internal Console</title>
 <style>
   :root{
-    --bg:#0f1115; --panel:#171a21; --panel2:#1d212b; --line:#2a2f3a;
-    --ink:#e7e9ee; --mut:#9aa3b2; --dim:#6b7382;
-    --brand:#5b8cff; --brand2:#7aa2ff;
-    --ok:#3ecf8e; --okbg:#12261d;
-    --warn:#f2b344; --warnbg:#2a2110; --bad:#ff6b6b; --badbg:#2a1414;
-    --grey:#6b7382; --greybg:#1e222b;
+    --bg:#f6f2ec; --bg2:#fbf9f5; --panel:#ffffff; --panel2:#f4efe7; --line:#e7e0d6;
+    --ink:#1b1a18; --mut:#6f675d; --dim:#9a9187;
+    --brand:#7a1f2b; --brand2:#8a2a37;
+    --ok:#2f7d5b; --okbg:#e9f3ec; --okline:#c3e0cf;
+    --warn:#a9741a; --warnbg:#fbf1dd; --warnline:#ecd9ac;
+    --bad:#b0202a; --badbg:#fbe9e9; --badline:#eec8c8;
+    --grey:#7a7268; --greybg:#efe9e1;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
-    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
   a{color:var(--brand2);text-decoration:none}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
-  header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#141822,#0f1115)}
-  .top{display:flex;align-items:center;gap:14px;padding:16px 0}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  header{border-bottom:1px solid var(--line);background:var(--panel)}
+  .top{display:flex;align-items:center;gap:14px;padding:15px 0}
   .mark{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;letter-spacing:.2px}
   .chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;
-    padding:3px 9px;border-radius:999px;border:1px solid;letter-spacing:.3px;text-transform:uppercase}
-  .logo{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--brand),#9b7aff);
-    display:grid;place-items:center;font-weight:800;color:#0b0d12;font-size:14px}
+    padding:3px 9px;border-radius:8px;border:1px solid;letter-spacing:.2px}
+  .logo{width:26px;height:26px;border-radius:7px;background:var(--brand);
+    display:grid;place-items:center;font-weight:800;color:#fff;font-size:14px}
   .sub{color:var(--mut);font-size:12px;margin-left:auto}
-  nav{display:flex;gap:4px;padding-bottom:0}
+  nav{display:flex;gap:2px;padding-bottom:0}
   nav button{background:none;border:0;color:var(--mut);font:inherit;font-weight:600;
-    padding:10px 14px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+    padding:11px 15px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
   nav button:hover{color:var(--ink)}
-  nav button.active{color:var(--ink);border-bottom-color:var(--brand)}
-  main{padding:26px 0 60px}
+  nav button.active{color:var(--brand);border-bottom-color:var(--brand)}
+  main{padding:28px 0 64px}
   .view{display:none} .view.active{display:block}
-  h1{font-size:20px;margin:0 0 4px} h2{font-size:15px;margin:26px 0 12px;color:var(--ink)}
-  .lead{color:var(--mut);margin:0 0 20px;max-width:760px}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.9px;text-transform:uppercase;color:var(--dim);margin:0 0 6px}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:-.3px;font-weight:700}
+  h2{font-size:15px;margin:30px 0 12px;color:var(--ink)}
+  .lead{color:var(--mut);margin:0 0 22px;max-width:800px}
   .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
-  .card .k{font-size:24px;font-weight:700} .card .l{color:var(--mut);font-size:12px;margin-top:2px}
-  .card .d{font-size:11px;margin-top:6px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .card .k{font-size:26px;font-weight:700;letter-spacing:-.5px} .card .l{color:var(--mut);font-size:12px;margin-top:3px}
+  .card .d{font-size:11px;margin-top:8px}
   table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);
-    border-radius:12px;overflow:hidden}
-  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
-  th{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.4px;font-weight:600}
+    border-radius:14px;overflow:hidden}
+  th,td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
+  th{color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:.5px;font-weight:700}
   tr:last-child td{border-bottom:0}
-  tr.click{cursor:pointer} tr.click:hover td{background:var(--panel2)}
-  .b-ok{color:var(--ok);background:var(--okbg);border-color:#1c4a37}
-  .b-warn{color:var(--warn);background:var(--warnbg);border-color:#4a3a12}
-  .b-bad{color:var(--bad);background:var(--badbg);border-color:#4a1c1c}
+  .b-ok{color:var(--ok);background:var(--okbg);border-color:var(--okline)}
+  .b-warn{color:var(--warn);background:var(--warnbg);border-color:var(--warnline)}
+  .b-bad{color:var(--bad);background:var(--badbg);border-color:var(--badline)}
   .b-grey{color:var(--grey);background:var(--greybg);border-color:var(--line)}
-  .bar{height:6px;border-radius:4px;background:#262b36;overflow:hidden;min-width:90px;display:inline-block;vertical-align:middle}
+  .bar{height:6px;border-radius:4px;background:#ece5db;overflow:hidden;min-width:90px;display:inline-block;vertical-align:middle}
   .bar > i{display:block;height:100%;border-radius:4px}
-  .metric{display:flex;align-items:center;gap:8px} .metric .v{min-width:34px;font-variant-numeric:tabular-nums}
+  .metric{display:flex;align-items:center;gap:8px;margin:7px 0} .metric .v{min-width:34px;font-variant-numeric:tabular-nums;font-weight:600}
   .muted{color:var(--mut)} .dim{color:var(--dim)} .mono{font-variant-numeric:tabular-nums}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
   .panel h3{margin:0 0 4px;font-size:13px}
-  .before{border-color:#4a1c1c} .after{border-color:#1c4a37}
+  .after{border-color:var(--okline)}
   .msg{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px;margin:10px 0;font-size:13px}
-  .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+  .tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dim)}
+  .btn{font:inherit;font-size:12px;font-weight:600;color:var(--ink);background:var(--panel2);
+    border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
+  .btn:hover{border-color:var(--brand);color:var(--brand)}
+  .btn.pri{background:var(--brand);color:#fff;border-color:var(--brand)}
+  .btn.pri:hover{color:#fff;opacity:.92}
+  .plaimark{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--brand);
+    background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 10px 4px 5px}
+  .plaimark .l{width:16px;height:16px;border-radius:4px;background:var(--brand);color:#fff;
+    display:grid;place-items:center;font-size:9px;font-weight:800}
+  .minibtn{font:inherit;font-size:11px;font-weight:600;color:var(--brand2);background:var(--panel2);
+    border:1px solid var(--line);border-radius:7px;padding:2px 8px;cursor:pointer;margin-top:5px}
+  .minibtn:hover{border-color:var(--brand)}
   .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:10px 0 4px}
   .step{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:150px;flex:1}
   .step .t{font-weight:700;font-size:13px} .step .s{color:var(--mut);font-size:11px;margin-top:4px}
   .arrow{display:grid;place-items:center;color:var(--dim);font-size:18px;padding:0 8px;min-width:28px}
-  .step.gate{border-color:#4a3a12;background:var(--warnbg)}
-  .step.badge{border-color:#1c4a37;background:var(--okbg)}
-  .step.revoke{border-color:#4a1c1c;background:var(--badbg)}
+  .step.gate{border-color:var(--warnline);background:var(--warnbg)}
+  .step.badge{border-color:var(--okline);background:var(--okbg)}
+  .step.revoke{border-color:var(--badline);background:var(--badbg)}
   .feed{list-style:none;margin:0;padding:0}
-  .feed li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .feed li{display:flex;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line);font-size:13px}
   .feed li:last-child{border:0} .feed .time{color:var(--dim);min-width:66px;font-size:12px}
   .dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex:0 0 auto}
-  .grid2x2{position:relative;height:440px;background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-top:8px}
-  .quad{position:absolute;width:50%;height:50%;padding:14px;color:var(--dim);font-size:11px;
-    text-transform:uppercase;letter-spacing:.3px;display:flex;opacity:.7}
-  .q-tl{top:0;left:0;border-right:1px dashed var(--line);border-bottom:1px dashed var(--line);align-items:flex-start;justify-content:flex-start}
-  .q-tr{top:0;right:0;border-bottom:1px dashed var(--line);align-items:flex-start;justify-content:flex-end;text-align:right}
-  .q-bl{bottom:0;left:0;border-right:1px dashed var(--line);align-items:flex-end;justify-content:flex-start}
-  .q-br{bottom:0;right:0;align-items:flex-end;justify-content:flex-end;text-align:right}
-  .pt{position:absolute;transform:translate(-50%,-50%);text-align:center;width:120px}
-  .pt .d{width:12px;height:12px;border-radius:50%;margin:0 auto 5px;border:2px solid #0f1115}
-  .pt .n{font-size:11px;font-weight:600;line-height:1.25}
-  .axis{position:absolute;color:var(--dim);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.4px}
-  .legend{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 0;font-size:12px;color:var(--mut)}
-  .legend span{display:inline-flex;align-items:center;gap:6px}
-  .sw{width:10px;height:10px;border-radius:3px;display:inline-block}
-  .note{font-size:12px;color:var(--dim);margin-top:14px;max-width:820px}
-  .kbd{font-size:11px;color:var(--dim);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+  .note{font-size:12px;color:var(--mut);margin-top:14px;max-width:840px}
+  .kbd{font-size:11px;color:var(--mut);background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
   .demo-banner{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;
     color:var(--mut);font-size:12px;margin:0 0 20px}
-  @media(max-width:820px){.cards{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.sub{display:none}}
+  .guard{border-left:3px solid var(--brand)}
+  @media(max-width:820px){.cards,.three{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.sub{display:none}h1{font-size:22px}}
 </style>
 </head>
 <body>
 <header><div class="wrap">
   <div class="top">
     <div class="mark"><span class="logo">L</span> Lintel&nbsp;AI <span class="dim" style="font-weight:500">/ Internal Console</span></div>
-    <span class="chip b-ok">● Trust bar: live</span>
+    <span class="chip b-ok" title="Console system status">● Platform operational</span>
     <span class="sub">Staff PM · AI Team · demo build</span>
   </div>
   <nav>
     <button data-v="reg" class="active">Feature registry</button>
-    <button data-v="dev">Developer view</button>
-    <button data-v="sr">Smart Reply · before / after</button>
-    <button data-v="how">How the badge works</button>
+    <button data-v="dev">Developer portal</button>
+    <button data-v="gate">Eval gate</button>
     <button data-v="feed">Live monitor</button>
-    <button data-v="map">Portfolio map</button>
+    <button data-v="firm">Firm view</button>
   </nav>
 </div></header>
 
@@ -112,12 +113,13 @@
 
 <!-- ============ REGISTRY ============ -->
 <section class="view active" id="reg">
+  <p class="eyebrow">Badge status</p>
   <h1>Feature registry</h1>
-  <p class="lead">Every AI feature at Lintel, and the one thing that holds across all of them: whether it currently clears our trust bar. We grant the badge per feature and monitor it on live traffic, so a feature that drifts loses it. We own the mark. Surface teams own the features.</p>
+  <p class="lead">Every AI feature at Lintel, and the one thing that holds across all of them: whether it currently clears our trust bar. We grant the "Powered by Lintel AI" badge per feature and monitor it on live traffic, so a feature that drifts loses it. We own the mark. Surface teams own the features.</p>
   <div class="cards">
-    <div class="card"><div class="k">3</div><div class="l">Certified · badge live</div><div class="d b-ok" style="display:inline-block;padding:2px 0">▲ on platform</div></div>
-    <div class="card"><div class="k">2</div><div class="l">Monitoring · on the bar</div><div class="d b-warn" style="display:inline-block;padding:2px 0">watching drift</div></div>
-    <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-bad" style="display:inline-block;padding:2px 0">Smart Reply, pre-fix</div></div>
+    <div class="card"><div class="k">3</div><div class="l">Certified · badge live</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">on platform</div></div>
+    <div class="card"><div class="k">2</div><div class="l">Monitoring · on the bar</div><div class="d b-warn" style="display:inline-block;padding:2px 7px">watching drift</div></div>
+    <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-bad" style="display:inline-block;padding:2px 7px">Smart Reply, pre-fix</div></div>
     <div class="card"><div class="k">92%</div><div class="l">Certified traffic passing</div><div class="d dim">rolling 7-day</div></div>
   </div>
 
@@ -125,35 +127,91 @@
     <thead><tr><th>Feature</th><th>Owning team</th><th>Badge</th><th>Quality vs bar</th><th>Adoption</th><th>Unit cost</th></tr></thead>
     <tbody id="regbody"></tbody>
   </table>
-  <p class="note">The badge says the output cleared our bar for its risk tier. It says nothing about how the feature was built. A team can build on the platform (easy path) or bring its own plumbing and still earn the badge by passing the gate. <span class="kbd">Click Smart Reply</span> to see a revoked feature and its rehab.</p>
+  <p class="note">The badge says the output cleared our bar for its risk tier. It says nothing about how the feature was built. A team can build on the platform (easy path) or bring its own plumbing and still earn the badge by passing the gate.</p>
 </section>
 
-<!-- ============ DEVELOPER VIEW ============ -->
+<!-- ============ DEVELOPER PORTAL ============ -->
 <section class="view" id="dev">
-  <h1>Build on Lintel AI: the surface-team view</h1>
-  <p class="lead">What a surface team sees when it opens the platform. This is the enablement side of the strategy: no mandate, we win when clearing our bar is the fastest way to ship trustworthy AI. Shown here as Marketing, shipping the lead-qual / leasing agent (#5).</p>
+  <p class="eyebrow">Surface-team view</p>
+  <h1>Developer portal</h1>
+  <p class="lead">What a surface team sees when it builds an AI feature on Lintel. Route a model, register your prompts, build a test set, run the gate, and ship with the badge. Shown here as Marketing building the lead-qual / leasing agent (#5).</p>
   <div class="demo-banner">Viewing as <b style="color:var(--ink)">Marketing</b> &nbsp;·&nbsp; feature <b style="color:var(--ink)">Lead-qual / leasing agent (#5)</b> &nbsp;·&nbsp; <span class="chip b-warn">Badge: Monitoring</span></div>
 
-  <h2>Ship a feature: the self-serve path</h2>
+  <h2>Ship a feature: five steps</h2>
   <div class="flow">
-    <div class="step"><div class="t">1 · Route your model</div><div class="s">Gateway. gpt-4o-mini primary, Claude fallback. <span class="b-ok">✓ set</span></div></div>
+    <div class="step"><div class="t">1 · Route your model</div><div class="s">gpt-4o-mini primary · Claude fallback <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step"><div class="t">2 · Register prompts</div><div class="s">Prompt store. 12 prompts, v7. <span class="b-ok">✓ done</span></div></div>
+    <div class="step"><div class="t">2 · Register prompts</div><div class="s">12 prompts · v7 <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step"><div class="t">3 · Attach golden set</div><div class="s">240 cases, sampled from Snowflake. <span class="b-ok">✓ ready</span></div></div>
+    <div class="step gate"><div class="t">3 · Test set</div><div class="s">240 cases · ideal answers uploaded <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step gate"><div class="t">4 · Run the gate</div><div class="s">Last run: <b>PASS</b> · 3m ago</div></div>
+    <div class="step gate"><div class="t">4 · Run the gate</div><div class="s"><b>PASS</b> · 3m ago</div></div>
     <div class="arrow">→</div>
-    <div class="step badge"><div class="t">5 · Badge</div><div class="s">Granted · Monitoring live traffic</div></div>
+    <div class="step badge"><div class="t">5 · Badge</div><div class="s">Granted · monitored live</div></div>
   </div>
 
-  <h2>Your last gate run</h2>
+  <h2>Step 3 · Build your test set</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">The platform pulls a random sample from your feature's live data in Snowflake. You do not choose the cases. Download the set, add the ideal answer for each, and upload it back. That becomes your versioned golden set, and the gate scores every run against it.</p>
+    <table style="border-radius:10px">
+      <thead><tr><th>Input · sampled from Snowflake</th><th>Ideal answer · you fill this in</th></tr></thead>
+      <tbody>
+        <tr><td class="muted">"Is the 2BR on Oak St still available?"</td><td>Confirm availability, ask for a move-in date, offer a tour slot</td></tr>
+        <tr><td class="muted">"What's the pet policy and the deposit?"</td><td>State the pet policy and deposit from the unit record, no guessing</td></tr>
+        <tr><td class="muted">"I want to apply, what do you need?"</td><td>Share the application link and list the required documents</td></tr>
+      </tbody>
+    </table>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
+      <button class="btn">⬇ Download test set (240 cases)</button>
+      <button class="btn">⬆ Upload with ideal answers</button>
+      <span class="chip b-ok">✓ Uploaded · v3 · scored by the gate</span>
+    </div>
+  </div>
+
+  <h2>Two ways to build</h2>
+  <div class="two">
+    <div class="panel after">
+      <span class="chip b-ok">Recommended</span>
+      <h3 style="margin-top:12px">Build on the platform</h3>
+      <p class="muted" style="margin:6px 0 12px">Gateway, eval harness, context runtime, and observability out of the box. One thin SDK call and routing, gating, and the badge are handled for you.</p>
+      <div class="msg mono" style="font-size:12px">const reply = await <b style="color:var(--brand2)">lintel</b>.generate({<br>&nbsp;&nbsp;feature: "lead-qual",<br>&nbsp;&nbsp;input,<br>});<br><span class="dim">// routed, gated, and badged automatically</span></div>
+    </div>
+    <div class="panel">
+      <span class="chip b-grey">Also allowed</span>
+      <h3 style="margin-top:12px">Bring your own plumbing</h3>
+      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to the same gate and earn the same badge. More work, and you are not required to use the platform to ship.</p>
+      <div class="metric"><span class="dim" style="width:150px">Time to first badge</span><span class="mono">under a week</span></div>
+      <div class="metric"><span class="dim" style="width:150px">Your feature this month</span><span class="mono">$0.22 / conversation · 4.1k runs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVAL GATE ============ -->
+<section class="view" id="gate">
+  <p class="eyebrow">The trust checkpoint</p>
+  <h1>Eval gate</h1>
+  <p class="lead">Every badge is earned here, and this is the one layer we build rather than buy. A feature clears two checks: zero safety red-line hits, then a quality score at or above the bar for its risk tier.</p>
+
+  <h2>How a test set becomes a badge</h2>
+  <div class="flow">
+    <div class="step"><div class="t">Sample from Snowflake</div><div class="s">Random cases from live data, spread across markets and tiers</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="t">Team adds ideal answers</div><div class="s">The domain answer key, which we audit</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="t">Versioned golden set</div><div class="s">Stored and re-used on every run</div></div>
+    <div class="arrow">→</div>
+    <div class="step gate"><div class="t">Gate scores the run</div><div class="s">Safety red-lines, then quality vs the tier bar</div></div>
+    <div class="arrow">→</div>
+    <div class="step badge"><div class="t">Badge + live monitoring</div><div class="s">Re-checked on production traffic</div></div>
+  </div>
+
+  <h2>Last gate run · Lead-qual / leasing agent (#5)</h2>
   <div class="two">
     <div class="panel">
       <h3>Safety red-lines. Any hit is a hard fail</h3>
-      <div class="metric" style="margin-top:12px"><span class="dim" style="width:190px">PII in output</span><span class="chip b-ok">0 hits · pass</span></div>
-      <div class="metric"><span class="dim" style="width:190px">Fair housing (steering)</span><span class="chip b-ok">0 hits · pass</span></div>
-      <div class="metric"><span class="dim" style="width:190px">Recording consent by state</span><span class="chip b-ok">0 hits · pass</span></div>
+      <div class="metric" style="margin-top:12px"><span class="dim" style="width:200px">PII in output</span><span class="chip b-ok">0 hits · pass</span></div>
+      <div class="metric"><span class="dim" style="width:200px">Fair housing (steering)</span><span class="chip b-ok">0 hits · pass</span></div>
+      <div class="metric"><span class="dim" style="width:200px">Recording consent by state</span><span class="chip b-ok">0 hits · pass</span></div>
       <p class="note" style="margin-top:16px">The platform sets and owns these. Your team does not. Voice adds the consent line automatically because your feature is tagged voice.</p>
     </div>
     <div class="panel">
@@ -162,39 +220,49 @@
       <div class="metric"><span class="dim" style="width:130px">Tone</span><div class="bar" style="flex:1"><i style="width:88%;background:var(--ok)"></i></div><span class="v mono">88</span><span class="dim mono" style="font-size:11px">/ 80</span></div>
       <div class="metric"><span class="dim" style="width:130px">Escalation acc.</span><div class="bar" style="flex:1"><i style="width:79%;background:var(--ok)"></i></div><span class="v mono">79</span><span class="dim mono" style="font-size:11px">/ 75</span></div>
       <div class="metric" style="margin-top:14px"><span class="dim" style="width:130px">Overall</span><span class="chip b-ok">PASS → badge granted</span></div>
-      <p class="note" style="margin-top:12px">Fall below a bar on live traffic and the badge auto-revokes until you re-pass. You see it here first.</p>
+      <p class="note" style="margin-top:12px">Fall below a bar on live traffic and the badge auto-revokes until you re-pass.</p>
     </div>
   </div>
 
-  <h2>Two ways to earn it. Your call</h2>
-  <div class="two">
-    <div class="panel after">
-      <span class="chip b-ok">Recommended</span>
-      <h3 style="margin-top:12px">Build on the platform</h3>
-      <p class="muted" style="margin:6px 0 12px">Gateway, eval harness, context runtime, and observability out of the box. Fastest path to a badge. One thin SDK call.</p>
-      <div class="msg mono" style="font-size:12px">const reply = await <b style="color:var(--brand2)">lintel</b>.generate({<br>&nbsp;&nbsp;feature: "lead-qual",<br>&nbsp;&nbsp;input,<br>});<br><span class="dim">// routed, gated, and badged automatically</span></div>
+  <h2>What the eval gate guarantees</h2>
+  <div class="three">
+    <div class="panel guard">
+      <h3>Randomized sample</h3>
+      <p class="muted" style="margin:6px 0 0">Test cases are pulled at random from live Snowflake data and sized for variance across markets and tiers. The set reflects real traffic, not a hand-picked demo.</p>
     </div>
-    <div class="panel">
-      <span class="chip b-grey">Also allowed</span>
-      <h3 style="margin-top:12px">Bring your own plumbing</h3>
-      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to our gate and earn the same badge. More work, and no mandate to use us. We win by being worth choosing.</p>
-      <div class="metric"><span class="dim" style="width:150px">Time to first badge</span><span class="mono">under a week</span></div>
-      <div class="metric"><span class="dim" style="width:150px">Your feature this month</span><span class="mono">$0.22 / conversation · 4.1k runs</span></div>
+    <div class="panel guard">
+      <h3>Platform-owned rubric</h3>
+      <p class="muted" style="margin:6px 0 0">The scoring dimensions, the safety red-lines, and the thresholds are set and owned by the platform. Teams supply only the domain ideal answers, and we audit them.</p>
+    </div>
+    <div class="panel guard">
+      <h3>Continuous monitoring</h3>
+      <p class="muted" style="margin:6px 0 0">Every badge is re-checked on live production traffic. Quality that slips after launch pulls the badge on its own. The gate certifies live behavior, not just launch day.</p>
     </div>
   </div>
-  <p class="note">This screen is the whole no-mandate bet. The badge is the carrot and the gate is the bar. The SDK is why the easy path is the one teams actually take.</p>
+
+  <h2>The bar is set per risk tier</h2>
+  <table>
+    <thead><tr><th>Risk tier</th><th>Example features</th><th>Quality bar</th><th>What a miss costs</th></tr></thead>
+    <tbody>
+      <tr><td><span class="chip b-ok">Low</span></td><td>Listing descriptions (#6)</td><td class="mono">80</td><td class="muted">a clumsy sentence, easy to edit before it ships</td></tr>
+      <tr><td><span class="chip b-warn">Medium</span></td><td>Smart Reply, lead-qual (#5)</td><td class="mono">80–85 + safety</td><td class="muted">a wrong reply to a tenant, a lost lead</td></tr>
+      <tr><td><span class="chip b-bad">High</span></td><td>NL financials (#10), screening (#4)</td><td class="mono">90 + hard red-lines</td><td class="muted">a wrong number at company scale, a fair-housing violation</td></tr>
+    </tbody>
+  </table>
+  <p class="note">One bar, calibrated on real customer data, set higher where a mistake costs more. Screening rejection letters (#4) sit above any bar we would set. That is a legal line, not a quality question, so the answer is no.</p>
 </section>
 
-<!-- ============ SMART REPLY ============ -->
+<!-- ============ SMART REPLY (reached from the registry) ============ -->
 <section class="view" id="sr">
-  <h1>Smart Reply: the proof case</h1>
-  <p class="lead">Smart Reply is the feature that fails: 14% adoption, the priciest of the three at $0.40/property/month, "quality varies widely." It has no way to catch a bad suggestion, so quality drifts and the badge is revoked. Fixing it is how the eval bar earns its keep, and it yields the reusable chat capability the leasing agent reuses at 6 months.</p>
+  <p class="eyebrow">Proof case</p>
+  <h1>Smart Reply: before and after the bar</h1>
+  <p class="lead">Smart Reply is the feature that fails: 14% adoption, the priciest of the three at $0.40 per property per month, and quality that varies widely. It had no way to catch a bad suggestion, so quality drifted and the badge was revoked. Running it through the gate is how the eval bar earns its keep, and it produces the reusable chat capability the leasing agent builds on.</p>
   <div class="two">
-    <div class="panel before">
+    <div class="panel" style="border-color:var(--badline)">
       <span class="chip b-bad">Before · badge revoked</span>
       <h3 style="margin-top:12px">No shared eval. Quality drifts, nobody sees it.</h3>
-      <div class="msg"><span class="tag muted">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
-      <div class="msg" style="border-color:#4a1c1c"><span class="tag b-bad" style="padding:2px 6px;border-radius:5px">Suggested reply · unchecked</span><br>Thanks for reaching out! Your lease renews on March 1st. Please let us know if you have any other questions. 🙂</div>
+      <div class="msg"><span class="tag">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
+      <div class="msg" style="border-color:var(--badline)"><span class="chip b-bad" style="padding:2px 6px">Suggested reply · unchecked</span><br><br>Thanks for reaching out! Your lease renews on March 1st. Please let us know if you have any other questions. 🙂</div>
       <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:31%;background:var(--bad)"></i></div><span class="v mono">31</span></div>
       <div class="metric"><span class="dim" style="width:120px">Safety red-lines</span><span class="chip b-bad">1 hit · PII in draft</span></div>
       <div class="metric"><span class="dim" style="width:120px">Adoption</span><span class="mono">14% of inbound messages</span></div>
@@ -202,33 +270,59 @@
     <div class="panel after">
       <span class="chip b-ok">After · on the bar, monitored</span>
       <h3 style="margin-top:12px">Gated on a golden set. Below-bar drafts never surface.</h3>
-      <div class="msg"><span class="tag muted">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
-      <div class="msg" style="border-color:#1c4a37"><span class="tag b-ok" style="padding:2px 6px;border-radius:5px">Suggested reply · passed gate</span><br>That sounds like an active leak. Please shut off the valve under the sink if you can reach it, and put a towel down. I've logged this as an <b>urgent maintenance request</b> and a plumber will be assigned today. I'll confirm the time here.</div>
+      <div class="msg"><span class="tag">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
+      <div class="msg" style="border-color:var(--okline)"><span class="chip b-ok" style="padding:2px 6px">Suggested reply · passed the gate</span><br><br>That sounds like an active leak. Please shut off the valve under the sink if you can reach it, and put a towel down. I've logged this as an <b>urgent maintenance request</b> and a plumber will be assigned today. I'll confirm the time here.</div>
       <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:91%;background:var(--ok)"></i></div><span class="v mono">91</span></div>
       <div class="metric"><span class="dim" style="width:120px">Safety red-lines</span><span class="chip b-ok">0 hits</span></div>
       <div class="metric"><span class="dim" style="width:120px">Below-bar drafts</span><span class="mono">suppressed before send</span></div>
     </div>
   </div>
-  <p class="note">The bar is measured on a versioned golden set with inputs sampled at random from real conversations in Snowflake, so the team cannot cherry-pick the test. Production monitoring on live traffic is the ungameable backstop. If quality drifts after launch, the badge is pulled automatically.</p>
+  <p class="note">The bar is measured on a versioned golden set with inputs sampled at random from real conversations in Snowflake, so the team cannot cherry-pick the test. Production monitoring on live traffic is the backstop: if quality drifts after launch, the badge is pulled on its own.</p>
+  <p style="margin-top:18px"><button class="minibtn" onclick="show('reg')">← Back to feature registry</button></p>
 </section>
 
-<!-- ============ HOW ============ -->
-<section class="view" id="how">
-  <h1>How a feature earns and keeps the badge</h1>
-  <p class="lead">Two flows. Build-time is how a surface team earns the mark. Run-time is what the platform does on every live request, including pulling the badge when a feature drifts below the bar.</p>
+<!-- ============ FIRM VIEW ============ -->
+<section class="view" id="firm">
+  <p class="eyebrow">Firm-facing</p>
+  <h1>What the firm sees</h1>
+  <p class="lead">The badge is the one part of the platform a customer ever sees. It appears to the firm's own staff inside the product, on AI output that cleared our bar. It is not stamped on the tenant's screen. Here is a leasing manager at a mid-size firm using Smart Reply to answer a tenant.</p>
+  <div class="panel" style="max-width:660px;padding:0;overflow:hidden">
+    <div style="padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px">
+      <b>Messages</b><span class="dim" style="font-size:12px">Oakwood Property Management</span>
+      <span class="dim" style="margin-left:auto;font-size:12px">Maria · Leasing</span>
+    </div>
+    <div style="padding:16px">
+      <div class="msg" style="margin-top:0"><span class="tag">Tenant · Unit 4B</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
+      <div class="panel" style="background:var(--panel2);margin-top:12px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <span class="tag" style="color:var(--brand)">Suggested reply</span>
+          <span class="plaimark" style="margin-left:auto"><span class="l">L</span> Powered by Lintel AI</span>
+        </div>
+        <div style="font-size:13px;line-height:1.55">That sounds like an active leak. Please shut off the valve under the sink if you can reach it, and put a towel down. I've logged this as an <b>urgent maintenance request</b> and a plumber will be assigned today. I'll confirm the time here.</div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <button class="btn pri">Insert reply</button>
+          <button class="btn">Edit</button>
+          <button class="btn">Dismiss</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="note">The mark tells the firm this reply cleared Lintel's quality and safety bar for its risk tier. The firm's staff sees it before sending. The tenant sees only the reply. If the feature drifts below the bar on live traffic, the mark disappears and the suggestion is held back, so the firm never leans on an output we no longer stand behind.</p>
+</section>
 
-  <h2>Build-time · earning the badge</h2>
-  <div class="flow">
-    <div class="step"><div class="t">Surface team</div><div class="s">Builds the feature + author prompts and golden-set answer key</div></div>
-    <div class="arrow">→</div>
-    <div class="step"><div class="t">Gateway</div><div class="s">Model routing, fallback, cost. A direct vendor call is off-platform and unbadged</div></div>
-    <div class="arrow">→</div>
-    <div class="step gate"><div class="t">Eval gate</div><div class="s">Random sample from Snowflake · safety red-lines (hard fail) · quality bar by risk tier</div></div>
-    <div class="arrow">→</div>
-    <div class="step badge"><div class="t">Badge granted</div><div class="s">"Powered by Lintel AI" shown to the firm</div></div>
+<!-- ============ LIVE MONITOR ============ -->
+<section class="view" id="feed">
+  <p class="eyebrow">Observability</p>
+  <h1>Live monitor</h1>
+  <p class="lead">The platform is invisible until something moves. This is what the AI team watches: badge state, drift, cost, and the leading indicators that say the strategy is failing before the damage lands. Observability substrate is bought; the AI layer on top is a thin build.</p>
+  <div class="cards">
+    <div class="card"><div class="k">+38%</div><div class="l">Platform adoption · 90d</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">listings drove the first read</div></div>
+    <div class="card"><div class="k">−41%</div><div class="l">Time-to-ship AI · surface team</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">real leverage, not overhead</div></div>
+    <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-warn" style="display:inline-block;padding:2px 7px">Smart Reply, pre-fix</div></div>
+    <div class="card"><div class="k">+2.1pt</div><div class="l">AI-cohort net retention delta</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">the business backstop</div></div>
   </div>
 
-  <h2>Run-time · using a badged feature, and losing the badge</h2>
+  <h2>Run-time · every live request, and how a badge is pulled</h2>
   <div class="flow">
     <div class="step"><div class="t">Firm / tenant request</div><div class="s">Live traffic hits a badged feature</div></div>
     <div class="arrow">→</div>
@@ -238,41 +332,10 @@
     <div class="arrow">→</div>
     <div class="step revoke"><div class="t">Drift below bar → revoke</div><div class="s">This feature loses its badge, the others keep theirs</div></div>
   </div>
-  <p class="note">A revocation is the mark working, the same way a restaurant losing its A-grade is the grading system working. One badged failure does not taint the whole brand, because the badge is per feature and the firewall is automatic. Revocation rate is a leading indicator we watch on the health of the whole strategy.</p>
-</section>
+  <p class="note">A revocation is the mark working, the same way a restaurant losing its A-grade is the grading system working. One badged failure does not taint the whole brand, because the badge is per feature and the firewall is automatic. Revocation rate is itself a leading indicator we watch.</p>
 
-<!-- ============ FEED ============ -->
-<section class="view" id="feed">
-  <h1>Live monitor</h1>
-  <p class="lead">The platform is invisible until something moves. This is what the AI team watches: badge state changes, drift, cost, and the leading indicators that tell us the strategy is failing before the damage lands.</p>
-  <div class="cards">
-    <div class="card"><div class="k">+38%</div><div class="l">Platform adoption · 90d</div><div class="d b-ok">listings drove the first read</div></div>
-    <div class="card"><div class="k">−41%</div><div class="l">Time-to-ship AI · surface team</div><div class="d b-ok">the platform is real leverage here</div></div>
-    <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-warn">Smart Reply, pre-fix</div></div>
-    <div class="card"><div class="k">+2.1pt</div><div class="l">AI-cohort net retention delta</div><div class="d b-ok">the business backstop</div></div>
-  </div>
   <h2>Event feed</h2>
   <ul class="feed" id="feedlist"></ul>
-</section>
-
-<!-- ============ MAP ============ -->
-<section class="view" id="map">
-  <h1>Portfolio map: value vs trust-readiness</h1>
-  <p class="lead">Where each item in the 10-feature backlog sits, and why the roadmap ships in this order. Foundation first. High-value, trust-ready features get enabled early. High-value but not-yet-trustworthy features wait for the bar. High-risk-low-value gets rejected.</p>
-  <div class="grid2x2" id="grid">
-    <div class="quad q-tl">Defer: build the bar first</div>
-    <div class="quad q-tr">Ship / enable now</div>
-    <div class="quad q-bl">Reject / backlog</div>
-    <div class="quad q-br">Low stakes, easy win</div>
-    <div class="axis" style="left:14px;top:50%;transform:rotate(-90deg) translateX(50%);transform-origin:left">Value to Lintel →</div>
-    <div class="axis" style="bottom:8px;left:50%;transform:translateX(-50%)">Trust-readiness (can we hit a bar today?) →</div>
-  </div>
-  <div class="legend">
-    <span><i class="sw" style="background:var(--ok)"></i> Enable / certify (90d to 6mo)</span>
-    <span><i class="sw" style="background:var(--warn)"></i> Gate-only or 12mo</span>
-    <span><i class="sw" style="background:var(--bad)"></i> Defer / reject</span>
-  </div>
-  <p class="note">Reject #4 (screening rejection letters): high fair-housing and legal risk, low impact. A standing no. Defer #10, #1, #8 until the bar exists or hand the predictive ML to data science and gate the output.</p>
 </section>
 
 </div></main>
@@ -280,16 +343,16 @@
 <script>
 // ---- feature registry data (hard-coded, illustrative) ----
 const F = [
-  {id:"sr", name:"Smart Reply", team:"Comms", state:"warn", badge:"Monitoring", q:76, bar:70, note:"rehabbed", adopt:"14% → climbing", cost:"$0.40 / property / mo", click:"sr"},
-  {name:"Lease parser", team:"Leasing", state:"ok", badge:"Certified", q:92, bar:90, note:"", adopt:"92% of leases", cost:"$0.18 / lease"},
-  {name:"Maintenance categorization", team:"Maintenance", state:"ok", badge:"Certified", q:88, bar:85, note:"", adopt:"100% of requests", cost:"$0.02 / request"},
-  {name:"Listing descriptions", team:"Listings", state:"ok", badge:"Certified", q:94, bar:80, note:"#6 · 90d win", adopt:"61% of new listings", cost:"$0.03 / listing"},
+  {name:"Lease parser", team:"Leasing", state:"ok", badge:"Certified", q:92, bar:90, note:"shipped · works", adopt:"92% of leases", cost:"$0.18 / lease"},
+  {name:"Maintenance categorization", team:"Maintenance", state:"ok", badge:"Certified", q:88, bar:85, note:"shipped · works silently", adopt:"100% of requests", cost:"$0.02 / request"},
+  {name:"Listing descriptions", team:"Listings", state:"ok", badge:"Certified", q:94, bar:80, note:"#6 · the 90d visible win", adopt:"61% of new listings", cost:"$0.03 / listing"},
+  {name:"Smart Reply", team:"Comms", state:"warn", badge:"Monitoring", q:76, bar:70, note:"shipped · the proof case, rehabbed", adopt:"14% of messages", cost:"$0.40 / property / mo", view:"sr"},
   {name:"Lead-qual / leasing agent", team:"Marketing", state:"warn", badge:"Monitoring", q:82, bar:80, note:"#5 · the EliseAI answer · chat + voice", adopt:"ramping", cost:"$0.22 / conversation"},
   {name:"Owner reports commentary", team:"Reporting", state:"grey", badge:"Queued · 12mo", q:0, bar:80, note:"#2", adopt:"—", cost:"—"},
   {name:"Voice maintenance intake", team:"Maintenance", state:"grey", badge:"Queued · 12mo", q:0, bar:85, note:"#7 · 2nd voice consumer → shared capability", adopt:"—", cost:"—"},
   {name:"Renewal pricing on comps", team:"Lease", state:"grey", badge:"Gate-only", q:0, bar:0, note:"#3 · data science builds, we gate + explain", adopt:"—", cost:"—"},
   {name:"NL financial reports", team:"Accounting", state:"bad", badge:"Deferred", q:0, bar:90, note:"#10 · highest money risk, needs the bar", adopt:"—", cost:"—"},
-  {name:"NL search across conversations", team:"CRM", state:"bad", badge:"Deferred", q:0, bar:80, note:"#1 · the Smart Reply shape", adopt:"—", cost:"—"},
+  {name:"NL search across conversations", team:"CRM", state:"bad", badge:"Deferred", q:0, bar:80, note:"#1 · the Smart Reply shape, fast-follow", adopt:"—", cost:"—"},
   {name:"Predictive churn scoring", team:"CS", state:"bad", badge:"Deferred", q:0, bar:0, note:"#8 · predictive ML, charter mismatch", adopt:"—", cost:"—"},
   {name:"Screening rejection letters", team:"Screening", state:"bad", badge:"Rejected", q:0, bar:0, note:"#4 · fair-housing + legal risk", adopt:"—", cost:"—"},
 ];
@@ -298,10 +361,9 @@ const barcol = {ok:"var(--ok)", warn:"var(--warn)", bad:"var(--bad)", grey:"var(
 const rb = document.getElementById("regbody");
 F.forEach(f=>{
   const tr = document.createElement("tr");
-  if(f.click){tr.className="click"; tr.onclick=()=>show(f.click);}
-  const qcell = f.q ? `<div class="metric"><div class="bar" style="width:110px"><i style="width:${f.q}%;background:${barcol[f.state]}"></i></div><span class="v mono">${f.q}</span><span class="dim mono" style="font-size:11px">/ bar ${f.bar}</span></div>` : `<span class="dim">—</span>`;
+  const qcell = f.q ? `<div class="metric" style="margin:0"><div class="bar" style="width:110px"><i style="width:${f.q}%;background:${barcol[f.state]}"></i></div><span class="v mono">${f.q}</span><span class="dim mono" style="font-size:11px">/ bar ${f.bar}</span></div>` : `<span class="dim">—</span>`;
   tr.innerHTML = `
-    <td><b>${f.name}</b>${f.note?`<br><span class="dim" style="font-size:11px">${f.note}</span>`:""}</td>
+    <td><b>${f.name}</b>${f.note?`<br><span class="dim" style="font-size:11px">${f.note}</span>`:""}${f.view?`<br><button class="minibtn" onclick="show('${f.view}')">View before / after</button>`:""}</td>
     <td class="muted">${f.team}</td>
     <td><span class="chip ${cls[f.state]}">${f.badge}</span></td>
     <td>${qcell}</td>
@@ -324,31 +386,6 @@ EV.forEach(e=>{
   const li=document.createElement("li");
   li.innerHTML=`<span class="time mono">${e.t}</span><span class="dot" style="background:${e.c}"></span><span><b>${e.h}</b><br><span class="dim">${e.s}</span></span>`;
   fl.appendChild(li);
-});
-
-// ---- 2x2 points ----  x = trust-readiness, y = value  (both 0..100)
-const P = [
-  {n:"Foundation (the bar)", x:73, y:90, c:"var(--ok)"},
-  {n:"Lease parser", x:92, y:60, c:"var(--ok)"},
-  {n:"Maint. categorization", x:90, y:48, c:"var(--ok)"},
-  {n:"#6 Listings", x:82, y:44, c:"var(--ok)"},
-  {n:"Smart Reply (fix)", x:66, y:70, c:"var(--warn)"},
-  {n:"#5 Leasing agent", x:60, y:88, c:"var(--warn)"},
-  {n:"#2 Owner commentary", x:56, y:52, c:"var(--warn)"},
-  {n:"#7 Voice intake", x:50, y:58, c:"var(--warn)"},
-  {n:"#3 Comps pricing", x:44, y:50, c:"var(--warn)"},
-  {n:"#1 NL search", x:30, y:74, c:"var(--bad)"},
-  {n:"#10 NL financials", x:20, y:82, c:"var(--bad)"},
-  {n:"#8 Churn ML", x:34, y:40, c:"var(--bad)"},
-  {n:"#4 Screening letters", x:24, y:18, c:"var(--bad)"},
-];
-const g = document.getElementById("grid");
-P.forEach(p=>{
-  const d=document.createElement("div");
-  d.className="pt";
-  d.style.left=p.x+"%"; d.style.top=(100-p.y)+"%";
-  d.innerHTML=`<div class="d" style="background:${p.c}"></div><div class="n">${p.n}</div>`;
-  g.appendChild(d);
 });
 
 // ---- nav ----
