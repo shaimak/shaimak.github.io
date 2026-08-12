@@ -122,19 +122,28 @@
     <div class="card"><div class="k">3</div><div class="l">Certified · badge live</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">on platform</div></div>
     <div class="card"><div class="k">2</div><div class="l">Provisional · in watch window</div><div class="d b-warn" style="display:inline-block;padding:2px 7px">just (re-)earned</div></div>
     <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-bad" style="display:inline-block;padding:2px 7px">Smart Reply, pre-fix</div></div>
-    <div class="card"><div class="k">92%</div><div class="l">Certified traffic passing</div><div class="d dim">rolling 7-day</div></div>
+    <div class="card"><div class="k">92%</div><div class="l">Sampled calls at or above bar</div><div class="d dim">badged features, rolling 7-day</div></div>
   </div>
 
   <table>
-    <thead><tr><th>Feature</th><th>Owning team</th><th>Badge</th><th>Quality vs bar</th><th>Adoption</th><th>Unit cost</th></tr></thead>
+    <thead><tr><th>Feature</th><th>Owning team</th><th>Badge / state</th><th>Quality vs bar</th><th>Adoption</th><th>Unit cost</th></tr></thead>
     <tbody id="regbody"></tbody>
   </table>
+  <p class="eyebrow" style="margin-top:18px">Badge states · a feature that has been through the gate</p>
   <div class="legend">
     <span><span class="chip b-ok">Certified</span> earned and holding above the bar</span>
     <span><span class="chip b-warn">Provisional</span> just (re-)earned, in the watch window</span>
     <span><span class="chip b-bad">Revoked</span> dropped below the bar, badge pulled</span>
   </div>
-  <p class="note">Monitoring runs under all of these, so it is not a state on its own. A Certified feature that starts trending toward the bar is flagged <b>At risk</b> before it is ever revoked. The badge also says nothing about how a feature was built: a team can build on the platform or bring its own plumbing and still earn it by passing the gate.</p>
+  <p class="eyebrow" style="margin-top:16px">Pipeline states · not yet at the gate, so no badge</p>
+  <div class="legend">
+    <span><span class="chip b-grey">Queued · 12mo</span> committed, scheduled inside the 12-month plan</span>
+    <span><span class="chip b-grey">Gate-only</span> another team builds it, we gate and explain it</span>
+    <span><span class="chip b-grey">Backlog</span> plausible, not yet scheduled</span>
+    <span><span class="chip b-bad">Deferred</span> deliberately held back until a precondition is met</span>
+    <span><span class="chip b-bad">Rejected</span> a standing no, will not be built</span>
+  </div>
+  <p class="note">No feature is sitting at <b>Revoked</b> today. Smart Reply was revoked and re-earned its badge, which is what the trailing-30d card above counts and what the proof case on its row walks through. Monitoring runs under all of the badge states, so it is not a state on its own. A Certified feature that starts trending toward the bar is flagged <b>At risk</b> before it is ever revoked. The badge also says nothing about how a feature was built: a team can build on the platform or bring its own plumbing and still earn it by passing the gate.</p>
 </section>
 
 <!-- ============ DEVELOPER PORTAL ============ -->
@@ -154,11 +163,45 @@
     <div class="arrow">→</div>
     <div class="step"><div class="t">4 · Test set</div><div class="s">240 cases · ideal answers uploaded <span class="b-ok">✓</span></div></div>
     <div class="arrow">→</div>
-    <div class="step gate"><div class="t">5 · Submit to gate</div><div class="s"><b>PASS</b> · 3m ago</div></div>
+    <div class="step gate"><div class="t">5 · Submit to gate</div><div class="s">platform-owned · <b>PASS</b> 3m ago</div></div>
     <div class="arrow">→</div>
-    <div class="step badge"><div class="t">6 · Badge</div><div class="s">Granted · monitored live</div></div>
+    <div class="step badge"><div class="t">6 · Earn the badge</div><div class="s">Provisional · monitored live</div></div>
   </div>
   <p class="note">Steps 1–4 are yours to configure. Step 5 hands your feature to the gate, which the platform owns and you do not control. See the <b>Eval gate</b> tab for how that decision is made.</p>
+
+  <h2>Step 1 · Route your model</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">Pick a model by name once. The gateway holds the keys, the rate limits, and the fallback order, so swapping a model later is a config change here and not a rewrite in your service.</p>
+    <table style="border-radius:10px">
+      <thead><tr><th>Role</th><th>Model</th><th>Used for</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td class="muted">Primary</td><td class="mono">gpt-4o-mini</td><td class="muted">chat turns and lead qualification</td><td><span class="chip b-ok">✓ Live</span></td></tr>
+        <tr><td class="muted">Fallback</td><td class="mono">claude-haiku</td><td class="muted">takes over on timeout or 5xx</td><td><span class="chip b-ok">✓ Armed</span></td></tr>
+        <tr><td class="muted">Voice</td><td class="mono">realtime-voice-1</td><td class="muted">the spoken leg of the agent</td><td><span class="chip b-ok">✓ Live</span></td></tr>
+      </tbody>
+    </table>
+    <div class="metric" style="margin-top:14px"><span class="dim" style="width:160px">Fallback trips · 30d</span><span class="mono">21 · all served, no failed turns</span></div>
+    <div class="metric"><span class="dim" style="width:160px">Keys and quota</span><span>held by the gateway, never in your service</span></div>
+  </div>
+
+  <h2>Step 2 · Register prompts</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">Every prompt is versioned in the platform rather than hard-coded in your repo. The version that ran is stamped on each request, so a quality drop can be traced back to the edit that caused it and rolled back without a deploy.</p>
+    <table style="border-radius:10px">
+      <thead><tr><th>Prompt</th><th>Version</th><th>Last edited</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td class="muted">Qualify inbound lead</td><td class="mono">v7</td><td class="muted">2d ago · M. Chen</td><td><span class="chip b-ok">✓ Live</span></td></tr>
+        <tr><td class="muted">Answer availability question</td><td class="mono">v4</td><td class="muted">9d ago · M. Chen</td><td><span class="chip b-ok">✓ Live</span></td></tr>
+        <tr><td class="muted">Book a tour slot</td><td class="mono">v2</td><td class="muted">3d ago · R. Patel</td><td><span class="chip b-warn">Draft · not gated</span></td></tr>
+      </tbody>
+    </table>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
+      <span class="chip b-grey">12 prompts registered</span>
+      <span class="chip b-ok">✓ 11 live at v7</span>
+      <span class="chip b-warn">1 draft, blocked from traffic</span>
+    </div>
+    <p class="note" style="margin-top:12px">A draft prompt cannot serve live traffic until it goes through the gate with the rest of the feature.</p>
+  </div>
 
   <h2>Step 3 · Connect knowledge</h2>
   <div class="panel">
@@ -190,6 +233,35 @@
       <button class="btn">⬇ Download test set (240 cases)</button>
       <button class="btn">⬆ Upload with ideal answers</button>
       <span class="chip b-ok">✓ Uploaded · v3 · scored by the gate</span>
+    </div>
+  </div>
+
+  <h2>Step 5 · Submit to gate <span class="chip b-warn" style="vertical-align:middle;margin-left:6px">Platform-owned from here</span></h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">This is the handoff. You press submit, and the decision stops being yours. The gate runs your versioned golden set, checks the safety red-lines first, then scores quality against the bar for your risk tier. You cannot tune the rubric, move the bar, or re-run until you have changed something.</p>
+    <div class="metric"><span class="dim" style="width:200px">Submitted</span><span>3m ago · by M. Chen (Marketing)</span></div>
+    <div class="metric"><span class="dim" style="width:200px">Risk tier</span><span><span class="chip b-warn">Medium</span> <span class="muted">set by Legal review, not self-assigned</span></span></div>
+    <div class="metric"><span class="dim" style="width:200px">Safety red-lines</span><span class="chip b-ok">0 hits · pass</span></div>
+    <div class="metric"><span class="dim" style="width:200px">Quality vs bar</span><span class="chip b-ok">82 / 80 · pass</span></div>
+    <div class="metric"><span class="dim" style="width:200px">Result</span><span class="chip b-ok">PASS → badge granted</span></div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
+      <button class="btn pri">Submit to gate</button>
+      <button class="btn" onclick="show('gate')">View the full gate run →</button>
+    </div>
+    <p class="note" style="margin-top:12px">A fail comes back with the cases you missed and the dimension you fell short on. You fix the feature and submit again. There is no appeal path and no override, which is what makes the badge worth anything.</p>
+  </div>
+
+  <h2>Step 6 · Earn the badge</h2>
+  <div class="panel after">
+    <p class="muted" style="margin:0 0 14px">The badge is granted per feature and stays live only while the feature holds the bar. Monitoring starts the moment it is granted, so this step never really finishes.</p>
+    <div class="metric"><span class="dim" style="width:200px">Badge state</span><span class="chip b-warn">Provisional</span> <span class="muted">just earned, in the watch window</span></div>
+    <div class="metric"><span class="dim" style="width:200px">Watch window</span><span>7-day drift check before it turns Certified</span></div>
+    <div class="metric"><span class="dim" style="width:200px">Where it shows</span><span>on suggested output inside the firm's product</span></div>
+    <div class="metric"><span class="dim" style="width:200px">How you lose it</span><span>sampled quality drifts below 80, badge auto-revokes</span></div>
+    <div style="margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <span class="plaimark"><span class="l">L</span> Powered by Lintel AI</span>
+      <span class="muted" style="font-size:12px">this is the mark your feature has earned</span>
+      <button class="btn" onclick="show('firm')">See it in the firm's product →</button>
     </div>
   </div>
 
@@ -257,7 +329,7 @@
     </div>
     <div class="panel guard">
       <h3>Platform-owned rubric</h3>
-      <p class="muted" style="margin:6px 0 0">The scoring dimensions, the safety red-lines, and the thresholds are set and owned by the platform. Teams supply only the domain ideal answers, and we audit them.</p>
+      <p class="muted" style="margin:6px 0 0">The scoring dimensions, the safety red-lines, and the bars are set and owned by the platform. Teams supply only the domain ideal answers, and we audit them.</p>
     </div>
     <div class="panel guard">
       <h3>Sampled monitoring</h3>
@@ -270,7 +342,7 @@
     <thead><tr><th>Risk tier</th><th>Example features</th><th>Quality bar</th><th>What a miss costs</th></tr></thead>
     <tbody>
       <tr><td><span class="chip b-ok">Low</span></td><td>Listing descriptions (#6)</td><td class="mono">80</td><td class="muted">a clumsy sentence, easy to edit before it ships</td></tr>
-      <tr><td><span class="chip b-warn">Medium</span></td><td>Smart Reply, lead-qual (#5)</td><td class="mono">80–85 + safety</td><td class="muted">a wrong reply to a tenant, a lost lead</td></tr>
+      <tr><td><span class="chip b-warn">Medium</span></td><td>Smart Reply, lead-qual (#5)</td><td class="mono">80 + safety</td><td class="muted">a wrong reply to a tenant, a lost lead</td></tr>
       <tr><td><span class="chip b-bad">High</span></td><td>NL financials (#10), screening (#4)</td><td class="mono">90 + hard red-lines</td><td class="muted">a wrong number at company scale, a fair-housing violation</td></tr>
     </tbody>
   </table>
@@ -288,7 +360,7 @@
       <h3 style="margin-top:12px">No shared eval. Quality drifts, nobody sees it.</h3>
       <div class="msg"><span class="tag">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
       <div class="msg" style="border-color:var(--badline)"><span class="chip b-bad" style="padding:2px 6px">Suggested reply · unchecked</span><br><br>Thanks for reaching out! Your lease renews on March 1st. Please let us know if you have any other questions. 🙂</div>
-      <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:31%;background:var(--bad)"></i></div><span class="v mono">31</span></div>
+      <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:31%;background:var(--bad)"></i></div><span class="v mono">31</span><span class="dim mono" style="font-size:11px">/ bar 80</span></div>
       <div class="metric"><span class="dim" style="width:120px">Safety red-lines</span><span class="chip b-bad">1 hit · PII in draft</span></div>
       <div class="metric"><span class="dim" style="width:120px">Adoption</span><span class="mono">14% of inbound messages</span></div>
     </div>
@@ -297,7 +369,7 @@
       <h3 style="margin-top:12px">Gated on a golden set. Below-bar drafts never surface.</h3>
       <div class="msg"><span class="tag">Tenant</span><br>My kitchen sink has been leaking under the cabinet since yesterday, there's water pooling. What do I do?</div>
       <div class="msg" style="border-color:var(--okline)"><span class="chip b-ok" style="padding:2px 6px">Suggested reply · passed the gate</span><br><br>That sounds like an active leak. Please shut off the valve under the sink if you can reach it, and put a towel down. I've logged this as an <b>urgent maintenance request</b> and a plumber will be assigned today. I'll confirm the time here.</div>
-      <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:91%;background:var(--ok)"></i></div><span class="v mono">91</span></div>
+      <div class="metric" style="margin-top:14px"><span class="dim" style="width:120px">Relevance</span><div class="bar" style="flex:1"><i style="width:91%;background:var(--ok)"></i></div><span class="v mono">91</span><span class="dim mono" style="font-size:11px">/ bar 80</span></div>
       <div class="metric"><span class="dim" style="width:120px">Safety red-lines</span><span class="chip b-ok">0 hits</span></div>
       <div class="metric"><span class="dim" style="width:120px">Below-bar drafts</span><span class="mono">suppressed before send</span></div>
     </div>
@@ -343,17 +415,17 @@
   <div class="cards">
     <div class="card"><div class="k">+38%</div><div class="l">Platform adoption · 90d</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">listings drove the first read</div></div>
     <div class="card"><div class="k">−41%</div><div class="l">Time-to-ship AI · surface team</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">real leverage, not overhead</div></div>
-    <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-warn" style="display:inline-block;padding:2px 7px">Smart Reply, pre-fix</div></div>
+    <div class="card"><div class="k">1</div><div class="l">Revocations · trailing 30d</div><div class="d b-bad" style="display:inline-block;padding:2px 7px">Smart Reply, pre-fix</div></div>
     <div class="card"><div class="k">+2.1pt</div><div class="l">AI-cohort net retention delta</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">the business backstop</div></div>
   </div>
 
-  <h2>Run-time · every live request, and how a badge is pulled</h2>
+  <h2>Run-time · what happens on live traffic, and how a badge is pulled</h2>
   <div class="flow">
     <div class="step"><div class="t">Firm / tenant request</div><div class="s">Live traffic hits a badged feature</div></div>
     <div class="arrow">→</div>
     <div class="step"><div class="t">Gateway</div><div class="s">Routes to the model, falls back on failure</div></div>
     <div class="arrow">→</div>
-    <div class="step"><div class="t">Observability</div><div class="s">Cost and latency on every call; quality drift on a sampled slice</div></div>
+    <div class="step"><div class="t">Observability</div><div class="s">Safety red-lines, cost and latency inline on every call; quality re-scored on a rolling sample</div></div>
     <div class="arrow">→</div>
     <div class="step revoke"><div class="t">Drift below bar → revoke</div><div class="s">This feature loses its badge, the others keep theirs</div></div>
   </div>
@@ -371,7 +443,7 @@ const F = [
   {name:"Lease parser", team:"Leasing", state:"ok", badge:"Certified", q:92, bar:90, note:"shipped · works", adopt:"92% of leases", cost:"$0.18 / lease"},
   {name:"Maintenance categorization", team:"Maintenance", state:"ok", badge:"Certified", q:88, bar:85, note:"shipped · works silently", adopt:"100% of requests", cost:"$0.02 / request"},
   {name:"Listing descriptions", team:"Listings", state:"ok", badge:"Certified", q:94, bar:80, note:"#6 · the 90d visible win", adopt:"61% of new listings", cost:"$0.03 / listing"},
-  {name:"Smart Reply", team:"Comms", state:"warn", badge:"Provisional", q:76, bar:70, note:"shipped · the proof case, rehabbed", adopt:"14% of messages", cost:"$0.40 / property / mo", view:"sr"},
+  {name:"Smart Reply", team:"Comms", state:"warn", badge:"Provisional", q:82, bar:80, note:"shipped · the proof case, rehabbed", adopt:"14% of inbound messages", cost:"$0.40 / property / mo", view:"sr"},
   {name:"Lead-qual / leasing agent", team:"Marketing", state:"warn", badge:"Provisional", q:82, bar:80, note:"#5 · the EliseAI answer · chat + voice", adopt:"ramping", cost:"$0.22 / conversation"},
   {name:"Owner reports commentary", team:"Reporting", state:"grey", badge:"Queued · 12mo", q:0, bar:80, note:"#2", adopt:"—", cost:"—"},
   {name:"Voice maintenance intake", team:"Maintenance", state:"grey", badge:"Queued · 12mo", q:0, bar:85, note:"#7 · 2nd voice consumer → shared capability", adopt:"—", cost:"—"},
@@ -400,12 +472,12 @@ F.forEach(f=>{
 
 // ---- live monitor feed ----
 const EV = [
-  {t:"09:14", c:"var(--bad)", h:"Smart Reply: badge revoked", s:"live relevance fell to 61, below the 70 bar. Auto-pulled. Comms + forward-deployed eng paged."},
-  {t:"11:02", c:"var(--warn)", h:"Smart Reply: rehab shipped, back on the bar", s:"golden set re-gated at 76. Badge → Monitoring. Watching 7-day drift before Certified."},
-  {t:"Mon", c:"var(--ok)", h:"Listing descriptions: Certified", s:"#6 cleared the low-risk bar first try. Earliest customer-visible adoption read."},
-  {t:"Tue", c:"var(--warn)", h:"Leasing agent: voice red-lines added", s:"recording-consent by state + fair-housing in live speech now hard-fail checks."},
-  {t:"Wed", c:"var(--ok)", h:"Gateway: model swap, zero feature rewrites", s:"routed 30% of eval traffic to a cheaper model that beat the incumbent. Config flip only."},
+  {t:"Today 11:02", c:"var(--warn)", h:"Smart Reply: rehab shipped, back on the bar", s:"golden set re-gated at 82. Badge → Provisional. Watching 7-day drift before Certified."},
+  {t:"Today 09:14", c:"var(--bad)", h:"Smart Reply: badge revoked", s:"sampled relevance fell to 61, below the 80 bar for its tier. Auto-pulled. Comms + forward-deployed eng paged."},
   {t:"Thu", c:"var(--bad)", h:"Screening letters (#4): rejected at intake", s:"fair-housing + legal risk, low impact. Standing no, logged for the CPO."},
+  {t:"Wed", c:"var(--ok)", h:"Gateway: model swap, zero feature rewrites", s:"routed 30% of eval traffic to a cheaper model that beat the incumbent. Config flip only."},
+  {t:"Tue", c:"var(--warn)", h:"Leasing agent: voice red-lines added", s:"recording-consent by state + fair-housing in live speech now hard-fail checks."},
+  {t:"Mon", c:"var(--ok)", h:"Listing descriptions: Certified", s:"#6 cleared the low-risk bar first try. Earliest customer-visible adoption read."},
 ];
 const fl = document.getElementById("feedlist");
 EV.forEach(e=>{
