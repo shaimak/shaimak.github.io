@@ -92,6 +92,16 @@
   .demo-banner{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;
     color:var(--mut);font-size:12px;margin:0 0 20px}
   .guard{border-left:3px solid var(--brand)}
+  .fld{width:100%;font:inherit;font-size:13px;color:var(--ink);background:var(--bg2);
+    border:1px solid var(--line);border-radius:8px;padding:8px 11px}
+  .fld:focus{outline:0;border-color:var(--brand)}
+  .frow{margin-bottom:15px}
+  .pick{display:flex;gap:8px;flex-wrap:wrap}
+  .pick input{position:absolute;opacity:0;pointer-events:none}
+  .pick label{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.2px;
+    padding:5px 11px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--mut);cursor:pointer}
+  .pick label:hover{border-color:var(--brand);color:var(--brand)}
+  .pick input:checked + label{background:var(--brand);border-color:var(--brand);color:#fff}
   @media(max-width:820px){.cards,.three{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.sub{display:none}h1{font-size:22px}}
 </style>
 </head>
@@ -115,8 +125,13 @@
 
 <!-- ============ REGISTRY ============ -->
 <section class="view active" id="reg">
-  <p class="eyebrow">Badge status</p>
-  <h1>Feature registry</h1>
+  <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
+    <div style="flex:1;min-width:300px">
+      <p class="eyebrow">Badge status</p>
+      <h1>Feature registry</h1>
+    </div>
+    <button class="btn pri" style="margin-top:20px" onclick="show('intake')">+ Register a feature</button>
+  </div>
   <p class="lead">Every AI feature at Lintel, and the one thing that holds across all of them: whether it currently clears our trust bar. We grant the "Powered by Lintel AI" badge per feature and monitor it on live traffic, so a feature that drifts loses it. We own the mark. Surface teams own the features.</p>
   <div class="cards">
     <div class="card"><div class="k">3</div><div class="l">Certified · badge live</div><div class="d b-ok" style="display:inline-block;padding:2px 7px">on platform</div></div>
@@ -135,7 +150,7 @@
     <span><span class="chip b-warn">Provisional</span> just (re-)earned, in the watch window</span>
     <span><span class="chip b-bad">Revoked</span> dropped below the bar, badge pulled</span>
   </div>
-  <p class="eyebrow" style="margin-top:16px">Pipeline states · not yet at the gate, so no badge</p>
+  <p class="eyebrow" style="margin-top:16px">Pipeline states · set at intake, not yet at the gate, so no badge <button class="minibtn" style="margin:0 0 0 4px;vertical-align:baseline" onclick="show('intake')">see the intake screen →</button></p>
   <div class="legend">
     <span><span class="chip b-grey">Queued · 12mo</span> committed, scheduled inside the 12-month plan</span>
     <span><span class="chip b-grey">Gate-only</span> another team builds it, we gate and explain it</span>
@@ -144,6 +159,124 @@
     <span><span class="chip b-bad">Rejected</span> a standing no, will not be built</span>
   </div>
   <p class="note">No feature is sitting at <b>Revoked</b> today. Smart Reply was revoked and re-earned its badge, which is what the trailing-30d card above counts and what the proof case on its row walks through. Monitoring runs under all of the badge states, so it is not a state on its own. A Certified feature that starts trending toward the bar is flagged <b>At risk</b> before it is ever revoked. The badge also says nothing about how a feature was built: a team can build on the platform or bring its own plumbing and still earn it by passing the gate.</p>
+</section>
+
+<!-- ============ INTAKE (reached from the registry) ============ -->
+<section class="view" id="intake">
+  <p class="eyebrow">Front door</p>
+  <h1>Register a feature</h1>
+  <p class="lead">Every AI feature at Lintel starts on this screen, and nothing reaches the gate without it. Intake turns a request into a pipeline state and records the reason. It is also where the platform says no. A no here is a logged decision with a named owner, so the same request does not come back as a hallway argument between two PMs.</p>
+  <div class="demo-banner">Viewing as <b style="color:var(--ink)">Reporting</b> &nbsp;·&nbsp; request <b style="color:var(--ink)">Owner reports commentary (#2)</b> &nbsp;·&nbsp; <span class="chip b-grey">Accepted · Queued · 12mo</span></div>
+
+  <h2>1 · The request</h2>
+  <div class="panel">
+    <div class="frow">
+      <p class="eyebrow" style="margin-bottom:5px">Feature name</p>
+      <input class="fld" value="Owner reports commentary">
+    </div>
+    <div class="two">
+      <div class="frow">
+        <p class="eyebrow" style="margin-bottom:5px">Owning team</p>
+        <select class="fld">
+          <option selected>Reporting</option>
+          <option>Leasing</option><option>Maintenance</option><option>Comms</option>
+          <option>Marketing</option><option>Listings</option><option>Accounting</option>
+          <option>CRM</option><option>CS</option><option>Screening</option>
+        </select>
+      </div>
+      <div class="frow">
+        <p class="eyebrow" style="margin-bottom:5px">Requested by</p>
+        <input class="fld" value="D. Okafor · PM, Reporting">
+      </div>
+    </div>
+    <div class="frow" style="margin-bottom:0">
+      <p class="eyebrow" style="margin-bottom:5px">What it does, in one line</p>
+      <input class="fld" value="Write the plain-English commentary at the top of the monthly owner report from the numbers already in it.">
+    </div>
+  </div>
+
+  <h2>2 · Modality</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">Modality decides whether the gate already covers this feature or whether we have to author new safety red-lines before it can be submitted. That authoring work is platform work, and it lands on our roadmap, so it is priced at intake instead of discovered later.</p>
+    <div class="pick">
+      <input type="radio" name="mod" id="mod-chat" checked><label for="mod-chat">Chat / text generation</label>
+      <input type="radio" name="mod" id="mod-voice"><label for="mod-voice">Voice</label>
+      <input type="radio" name="mod" id="mod-class"><label for="mod-class">Classification</label>
+      <input type="radio" name="mod" id="mod-ml"><label for="mod-ml">Predictive ML</label>
+    </div>
+    <div class="metric" style="margin-top:16px"><span class="dim" style="width:190px">Gate coverage</span><span id="modcover">Covered today. Chat runs against red-lines the platform has already written, so this feature can submit as soon as it is built.</span></div>
+    <p class="note">Voice is the worked example. When the leasing agent (#5) came through as the first voice request, the gate had no red-lines for it. Recording consent varies by state and fair-housing rules apply to live speech, so the platform authored those checks before the feature could be submitted. Voice maintenance intake (#7) arrived second and inherited them at no cost. That is the argument for one voice capability rather than a second team writing its own.</p>
+  </div>
+
+  <h2>3 · Data the feature reads</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">Declare the sources here and the platform sets the permission scope and the PII masking from them. This is the same list the surface team sees later at <b>Connect knowledge</b> in the developer portal, and a team cannot widen it there without coming back through intake.</p>
+    <div class="pick">
+      <input type="checkbox" id="d1" checked><label for="d1">Unit records</label>
+      <input type="checkbox" id="d2"><label for="d2">Lease terms</label>
+      <input type="checkbox" id="d3"><label for="d3">Tenant history</label>
+      <input type="checkbox" id="d4"><label for="d4">Maintenance logs</label>
+      <input type="checkbox" id="d5" class="sens" checked><label for="d5">Owner financials</label>
+      <input type="checkbox" id="d6" class="sens"><label for="d6">Screening data</label>
+    </div>
+    <div class="metric" style="margin-top:16px"><span class="dim" style="width:190px">Permission scope</span><span>Firms with owner reporting enabled, scoped to the owner's own portfolio</span></div>
+    <div class="metric"><span class="dim" style="width:190px">Tenant PII</span><span>masked before it reaches the model</span></div>
+  </div>
+
+  <h2>4 · Proposed risk tier</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">The team proposes a tier. The tier sets the quality bar the gate will hold this feature to, so the team does not get the final say on it. Anything that reads owner financials or screening data, or that can touch fair housing, is flagged automatically and goes to Legal to have the tier set.</p>
+    <div class="pick">
+      <input type="radio" name="tier" id="t-low"><label for="t-low">Low · bar 80</label>
+      <input type="radio" name="tier" id="t-med" checked><label for="t-med">Medium · bar 80 + safety</label>
+      <input type="radio" name="tier" id="t-high"><label for="t-high">High · bar 90 + hard red-lines</label>
+    </div>
+    <div class="metric" style="margin-top:16px"><span class="dim" style="width:190px">Automatic flag</span><span id="tierflag" class="chip b-bad">Legal review required</span></div>
+    <div class="metric"><span class="dim" style="width:190px">Reason</span><span id="tierwhy" class="muted">reads owner financials, so the tier is set by Legal review and cannot be self-assigned</span></div>
+    <p class="note">Screening rejection letters (#4) is what this flag exists for. The requesting team proposed Medium. The flag sent it to Legal, and Legal found the exposure was legal. A higher bar does not fix legal exposure, so that request became the rejected example below.</p>
+  </div>
+
+  <h2>5 · Build path</h2>
+  <div class="panel">
+    <p class="muted" style="margin:0 0 14px">Most requests go to the developer portal and ship through the six steps. Predictive ML does not, and intake is where that fork is decided.</p>
+    <div class="pick">
+      <input type="checkbox" id="mlon"><label for="mlon">This feature needs a trained model that scores or forecasts</label>
+    </div>
+    <div class="msg" id="route" style="margin-top:16px"></div>
+  </div>
+
+  <h2>Intake decision</h2>
+  <div class="three">
+    <div class="panel guard" style="border-left-color:var(--ok)">
+      <span class="chip b-ok">Accepted</span>
+      <h3 style="margin-top:12px">Enters the pipeline at a state</h3>
+      <p class="muted" style="margin:6px 0 12px">The request is real, the gate covers it, and it fits the 12-month plan. It gets a pipeline state that says how committed we are, and it appears in the registry that day.</p>
+      <div class="metric"><span class="dim" style="width:96px">Example</span><span>Owner reports commentary (#2)</span></div>
+      <div class="metric"><span class="dim" style="width:96px">Enters as</span><span class="chip b-grey">Queued · 12mo</span></div>
+      <div class="metric"><span class="dim" style="width:96px">Next step</span><span class="muted">Legal sets the tier, then the developer portal</span></div>
+    </div>
+    <div class="panel guard" style="border-left-color:var(--warn)">
+      <span class="chip b-warn">Deferred</span>
+      <h3 style="margin-top:12px">Held back until a named precondition is met</h3>
+      <p class="muted" style="margin:6px 0 12px">We agree it should exist. We are saying not yet, and the thing that has to be true first is written down so the requesting team can see when to come back.</p>
+      <div class="metric"><span class="dim" style="width:96px">Example</span><span>NL financial reports (#10)</span></div>
+      <div class="metric"><span class="dim" style="width:96px">Precondition</span><span class="muted">the bar has to be proven on Smart Reply first</span></div>
+      <div class="metric"><span class="dim" style="width:96px">Revisit</span><span class="muted">when Smart Reply holds Certified through its watch window</span></div>
+    </div>
+    <div class="panel guard" style="border-left-color:var(--bad)">
+      <span class="chip b-bad">Rejected</span>
+      <h3 style="margin-top:12px">A standing no, logged for the CPO</h3>
+      <p class="muted" style="margin:6px 0 12px">The exposure is legal, and no quality bar we could set would remove it. It never reaches the gate. The decision is logged with the reason so it is visible to the person who owns that risk and can be overturned by them.</p>
+      <div class="metric"><span class="dim" style="width:96px">Example</span><span>Screening rejection letters (#4)</span></div>
+      <div class="metric"><span class="dim" style="width:96px">Reason</span><span class="muted">fair-housing and legal exposure, low impact</span></div>
+      <div class="metric"><span class="dim" style="width:96px">Logged to</span><span class="muted">CPO, with the requesting team copied</span></div>
+    </div>
+  </div>
+  <p class="note">Backlog and Gate-only are the other two accepted outcomes. Backlog means plausible with impact we cannot size yet, like vendor selection for dispatch (#9). Gate-only means another team builds it and we gate and explain it, like renewal pricing on comps (#3). Between them these are the five pipeline states in the registry legend, and every feature carrying one of them was assigned it on this screen. A feature leaves its pipeline state only by passing the gate, which is where badge states start.</p>
+  <div style="display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap">
+    <button class="btn pri">Submit for intake review</button>
+    <button class="minibtn" style="margin:0" onclick="show('reg')">← Back to feature registry</button>
+  </div>
 </section>
 
 <!-- ============ DEVELOPER PORTAL ============ -->
@@ -171,7 +304,7 @@
 
   <h2>Step 1 · Route your model</h2>
   <div class="panel">
-    <p class="muted" style="margin:0 0 14px">Pick a model by name once. The gateway holds the keys, the rate limits, and the fallback order, so swapping a model later is a config change here and not a rewrite in your service.</p>
+    <p class="muted" style="margin:0 0 14px">Pick a model by name once. The gateway holds the keys, the rate limits, and the fallback order. To swap a model later you change it on this screen. Your service stays as it is.</p>
     <table style="border-radius:10px">
       <thead><tr><th>Role</th><th>Model</th><th>Used for</th><th>State</th></tr></thead>
       <tbody>
@@ -186,7 +319,7 @@
 
   <h2>Step 2 · Register prompts</h2>
   <div class="panel">
-    <p class="muted" style="margin:0 0 14px">Every prompt is versioned in the platform rather than hard-coded in your repo. The version that ran is stamped on each request, so a quality drop can be traced back to the edit that caused it and rolled back without a deploy.</p>
+    <p class="muted" style="margin:0 0 14px">Every prompt is versioned in the platform, so none of it sits hard-coded in your repo. The version that ran is stamped on each request. A quality drop can be traced back to the edit that caused it, and rolled back without a deploy.</p>
     <table style="border-radius:10px">
       <thead><tr><th>Prompt</th><th>Version</th><th>Last edited</th><th>State</th></tr></thead>
       <tbody>
@@ -238,7 +371,7 @@
 
   <h2>Step 5 · Submit to gate <span class="chip b-warn" style="vertical-align:middle;margin-left:6px">Platform-owned from here</span></h2>
   <div class="panel">
-    <p class="muted" style="margin:0 0 14px">This is the handoff. You press submit, and the decision stops being yours. The gate runs your versioned golden set, checks the safety red-lines first, then scores quality against the bar for your risk tier. You cannot tune the rubric, move the bar, or re-run until you have changed something.</p>
+    <p class="muted" style="margin:0 0 14px">This is the handoff. You press submit, and the decision stops being yours. The gate runs your versioned golden set, checks the safety red-lines first, then scores quality against the bar for your risk tier. You cannot tune the rubric or move the bar. A re-run needs an actual change to the feature first.</p>
     <div class="metric"><span class="dim" style="width:200px">Submitted</span><span>3m ago · by M. Chen (Marketing)</span></div>
     <div class="metric"><span class="dim" style="width:200px">Risk tier</span><span><span class="chip b-warn">Medium</span> <span class="muted">set by Legal review, not self-assigned</span></span></div>
     <div class="metric"><span class="dim" style="width:200px">Safety red-lines</span><span class="chip b-ok">0 hits · pass</span></div>
@@ -248,12 +381,12 @@
       <button class="btn pri">Submit to gate</button>
       <button class="btn" onclick="show('gate')">View the full gate run →</button>
     </div>
-    <p class="note" style="margin-top:12px">A fail comes back with the cases you missed and the dimension you fell short on. You fix the feature and submit again. There is no appeal path and no override, which is what makes the badge worth anything.</p>
+    <p class="note" style="margin-top:12px">A fail comes back with the cases you missed and the dimension you fell short on. You fix the feature and submit again. There is no appeal path and no override. That is what makes the badge worth anything.</p>
   </div>
 
   <h2>Step 6 · Earn the badge</h2>
   <div class="panel after">
-    <p class="muted" style="margin:0 0 14px">The badge is granted per feature and stays live only while the feature holds the bar. Monitoring starts the moment it is granted, so this step never really finishes.</p>
+    <p class="muted" style="margin:0 0 14px">The badge is granted per feature. It stays live only while the feature holds the bar. Monitoring starts the moment it is granted, so this step never really finishes.</p>
     <div class="metric"><span class="dim" style="width:200px">Badge state</span><span class="chip b-warn">Provisional</span> <span class="muted">just earned, in the watch window</span></div>
     <div class="metric"><span class="dim" style="width:200px">Watch window</span><span>7-day drift check before it turns Certified</span></div>
     <div class="metric"><span class="dim" style="width:200px">Where it shows</span><span>on suggested output inside the firm's product</span></div>
@@ -276,7 +409,7 @@
     <div class="panel">
       <span class="chip b-grey">Also allowed</span>
       <h3 style="margin-top:12px">Bring your own plumbing</h3>
-      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to the same gate and earn the same badge. More work, and you are not required to use the platform to ship.</p>
+      <p class="muted" style="margin:6px 0 12px">Own your stack if you have the resources. You still submit to the same gate and earn the same badge. It is more work for your team. Nothing forces you onto the platform to ship.</p>
       <div class="metric"><span class="dim" style="width:150px">Time to first badge</span><span class="mono">under a week</span></div>
       <div class="metric"><span class="dim" style="width:150px">Your feature this month</span><span class="mono">$0.22 / conversation · 4.1k runs</span></div>
     </div>
@@ -325,7 +458,7 @@
   <div class="three">
     <div class="panel guard">
       <h3>Randomized sample</h3>
-      <p class="muted" style="margin:6px 0 0">Test cases are pulled at random from live Snowflake data and sized for variance across markets and tiers. The set reflects real traffic, not a hand-picked demo.</p>
+      <p class="muted" style="margin:6px 0 0">Test cases are pulled at random from live Snowflake data and sized for variance across markets and tiers. The set reflects what real traffic looks like. Nobody on the team gets to hand-pick the cases.</p>
     </div>
     <div class="panel guard">
       <h3>Platform-owned rubric</h3>
@@ -333,7 +466,7 @@
     </div>
     <div class="panel guard">
       <h3>Sampled monitoring</h3>
-      <p class="muted" style="margin:6px 0 0">Safety red-lines run inline on every request. Quality is re-scored on a rolling sample of live traffic, not every call, so drift after launch pulls the badge without doubling inference cost.</p>
+      <p class="muted" style="margin:6px 0 0">Safety red-lines run inline on every request. Quality is re-scored on a rolling sample of live traffic, and not on every call. Drift after launch still pulls the badge, and inference cost does not double.</p>
     </div>
   </div>
 
@@ -346,7 +479,7 @@
       <tr><td><span class="chip b-bad">High</span></td><td>NL financials (#10), screening (#4)</td><td class="mono">90 + hard red-lines</td><td class="muted">a wrong number at company scale, a fair-housing violation</td></tr>
     </tbody>
   </table>
-  <p class="note">One bar, calibrated on real customer data, set higher where a mistake costs more. For legally sensitive features (financials, screening, anything touching fair housing) the risk tier is set by a Legal review, not self-assigned by the team. Screening rejection letters (#4) sit above any bar we would set. That is a legal line, not a quality question, so the answer is no.</p>
+  <p class="note">One bar, calibrated on real customer data, set higher where a mistake costs more. For legally sensitive features (financials, screening, anything touching fair housing) the risk tier is set by a Legal review. The team does not assign its own. Screening rejection letters (#4) sit above any bar we would set. The exposure there is legal, so a higher threshold does not fix it. The answer is no.</p>
 </section>
 
 <!-- ============ SMART REPLY (reached from the registry) ============ -->
@@ -485,6 +618,38 @@ EV.forEach(e=>{
   li.innerHTML=`<span class="time mono">${e.t}</span><span class="dot" style="background:${e.c}"></span><span><b>${e.h}</b><br><span class="dim">${e.s}</span></span>`;
   fl.appendChild(li);
 });
+
+// ---- intake form (mockup wiring, no submission) ----
+const COVER = {
+  "mod-chat":"Covered today. Chat runs against red-lines the platform has already written, so this feature can submit as soon as it is built.",
+  "mod-voice":"Not covered. The platform authors recording-consent by state and fair-housing-in-speech red-lines before this feature can be submitted.",
+  "mod-class":"Covered today. Classification is scored against the same golden-set harness, with accuracy in place of relevance.",
+  "mod-ml":"Covered by the gate-only path. The gate does not score a probability against a text rubric. It gates the explanation the model ships with, and monitors accuracy on live traffic."
+};
+const ROUTE = {
+  off:'Goes to the <b>developer portal</b> and ships through the six steps. The team builds it and the gate scores it before the badge is granted.',
+  on:'<b>Data science builds and owns the model.</b> The platform gates it and adds the LLM explanation on top, so the number arrives with a reason a person can read. It enters the registry as <b>Gate-only</b>. Renewal pricing on comps (#3) took this path.'
+};
+const ml = document.getElementById("mlon"), mlmod = document.getElementById("mod-ml");
+function sync(){
+  const mod = document.querySelector('input[name=mod]:checked').id;
+  document.getElementById("modcover").textContent = COVER[mod];
+  document.getElementById("route").innerHTML = ROUTE[ml.checked ? "on" : "off"];
+  const sens = [...document.querySelectorAll("#intake .sens")].filter(c=>c.checked);
+  const flag = document.getElementById("tierflag");
+  flag.className = "chip " + (sens.length ? "b-bad" : "b-grey");
+  flag.textContent = sens.length ? "Legal review required" : "None · proposed tier stands";
+  document.getElementById("tierwhy").textContent = sens.length
+    ? "reads " + sens.map(c=>c.nextElementSibling.textContent.toLowerCase()).join(" and ")
+      + ", so the tier is set by Legal review and cannot be self-assigned"
+    : "no sensitive source declared, so the proposed tier holds unless the gate run says otherwise";
+}
+document.querySelectorAll("#intake input").forEach(i=>i.onchange=()=>{
+  if(i===mlmod && i.checked) ml.checked = true;
+  if(i===ml && !i.checked && mlmod.checked) document.getElementById("mod-chat").checked = true;
+  sync();
+});
+sync();
 
 // ---- nav ----
 function show(v){
